@@ -1,0 +1,12 @@
+.menuLg, .cartIcon{
+    @media (min-width: 768px) {
+        width: 170px;
+    }
+}
+.navbar-toggler, .btn-close{
+    border: none;
+    &:focus, :active, :focus{
+        outline: none;
+        box-shadow: none;
+    }
+}

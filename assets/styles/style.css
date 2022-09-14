@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .menuLg, .cartIcon {
+    width: 170px;
+  }
+}
+
+.navbar-toggler, .btn-close {
+  border: none;
+}
+.navbar-toggler:focus, .navbar-toggler :active, .navbar-toggler :focus, .btn-close:focus, .btn-close :active, .btn-close :focus {
+  outline: none;
+  box-shadow: none;
+}/*# sourceMappingURL=style.css.map */
