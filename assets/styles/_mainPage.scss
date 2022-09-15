@@ -1,0 +1,11 @@
+.introImg{
+    display: inline-block;
+    width: 400px;
+
+    @media(max-width:1400px){
+        width: 300px;
+    }
+    @media(max-width:992px){
+        width: 200px;
+    }
+}
