@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
 @media (min-width: 768px) {
   .menuLg, .cartIcon {
     width: 170px;
@@ -10,4 +11,40 @@
 .navbar-toggler:focus, .navbar-toggler :active, .navbar-toggler :focus, .btn-close:focus, .btn-close :active, .btn-close :focus {
   outline: none;
   box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("/assets/img/menu.png");
+}
+
+.logo {
+  width: 80px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+}
+
+.contact {
+  width: 300px;
+  border: 3px solid #000000;
+  border-bottom: none;
+}
+
+.goUp {
+  width: 85px;
+  height: 85px;
+  border: 3px solid #000000;
+  border-top: none;
+}
+
+.goUpBtn {
+  text-decoration: none;
+  color: #000000;
+}
+
+body {
+  background-color: #FFF9F0;
+  color: #000000;
+  font-family: "Lato", sans-serif;
 }/*# sourceMappingURL=style.css.map */

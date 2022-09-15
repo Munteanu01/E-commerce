@@ -1,2 +1,11 @@
+@import './variables';
 @import './navbar';
 @import './footer';
+
+
+
+body{
+    background-color: $backgroundColor;
+    color: $primaryColor;
+    font-family: $font;
+}
