@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
-@media (min-width: 768px) {
-  .menuLg, .cartIcon {
-    width: 170px;
-  }
-}
-
 .navbar-toggler, .btn-close {
   border: none;
 }
@@ -21,8 +15,14 @@
   width: 80px;
 }
 
-.nav-link {
-  font-size: 1.2rem;
+.cartIcon {
+  width: 37px;
+  margin: 0 12px 0 5px;
+}
+
+.offcanvas-start {
+  background-color: #FFF9F0;
+  font-size: 1.3rem;
 }
 
 .contact {
