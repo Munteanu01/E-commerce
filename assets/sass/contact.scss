@@ -1,0 +1,20 @@
+@import './navbar';
+@import './var';
+
+body{
+    background-color: $contactColor;
+    color: $secondaryColor;
+    font-family: $font;
+}
+.offcanvas-start{
+    background-color: $contactColor;
+}
+.nav-link{
+    color: $secondaryColor;
+}
+.btn-close{
+    background-color: $secondaryColor;
+}
+.navbar-toggler-icon{
+    background-image: url('/assets/img/menu\ \(1\).png');
+}
