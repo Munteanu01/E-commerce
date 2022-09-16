@@ -1,3 +1,7 @@
+@import './navbar';
+@import './footer';
+@import './var';
+
 body{
     background-color: $backgroundColor;
     color: $primaryColor;
@@ -33,7 +37,3 @@ body{
 .contactLink{
     border-radius: 0;
 }
-
-
-
-

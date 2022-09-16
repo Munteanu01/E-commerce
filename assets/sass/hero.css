@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
 .navbar-toggler, .btn-close {
   border: none;
 }
@@ -23,6 +25,33 @@
 .offcanvas-start {
   background-color: #FFF9F0;
   font-size: 1.3rem;
+}
+
+.contact {
+  border: 2px solid #000000;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom: none;
+  width: 300px;
+}
+@media (max-width: 576px) {
+  .contact {
+    width: 200px;
+  }
+}
+
+.contactIcon {
+  width: 25px;
+}
+
+.contactIcons {
+  justify-content: space-between;
+}
+
+body {
+  background-color: #FFF9F0;
+  color: #000000;
+  font-family: "Lato", sans-serif;
 }
 
 .introImg, .plantsImg, .plantersImg {
@@ -63,31 +92,4 @@
 
 .contactLink {
   border-radius: 0;
-}
-
-.contact {
-  border: 2px solid #000000;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  border-bottom: none;
-  width: 300px;
-}
-@media (max-width: 576px) {
-  .contact {
-    width: 200px;
-  }
-}
-
-.contactIcon {
-  width: 25px;
-}
-
-.contactIcons {
-  justify-content: space-between;
-}
-
-body {
-  background-color: #FFF9F0;
-  color: #000000;
-  font-family: "Lato", sans-serif;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=hero.css.map */
