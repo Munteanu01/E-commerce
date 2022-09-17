@@ -19,7 +19,7 @@ body{
 .introImg{
     display: inline-block;
 }
-.plantsLink, .plantersLink, .contactLink{
+.plantsLink, .plantersLink{
     font-size: 1.3rem;
     text-decoration: none;
     color: $primaryColor;
@@ -33,7 +33,4 @@ body{
     @media (max-width:992px){
         font-size: 1rem;
     }
-}
-.contactLink{
-    border-radius: 0;
 }

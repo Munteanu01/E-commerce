@@ -72,24 +72,20 @@ body {
   display: inline-block;
 }
 
-.plantsLink, .plantersLink, .contactLink {
+.plantsLink, .plantersLink {
   font-size: 1.3rem;
   text-decoration: none;
   color: #000000;
   border: 2px solid #000000;
   border-radius: 30px;
 }
-.plantsLink:hover, .plantersLink:hover, .contactLink:hover {
+.plantsLink:hover, .plantersLink:hover {
   color: #FFFFFF;
   background-color: #000000;
   transition: 400ms ease-in-out;
 }
 @media (max-width: 992px) {
-  .plantsLink, .plantersLink, .contactLink {
+  .plantsLink, .plantersLink {
     font-size: 1rem;
   }
-}
-
-.contactLink {
-  border-radius: 0;
 }/*# sourceMappingURL=hero.css.map */
