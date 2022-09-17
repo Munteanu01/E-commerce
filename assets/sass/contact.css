@@ -46,4 +46,32 @@ body {
 
 .navbar-toggler-icon {
   background-image: url("/assets/img/menu (1).png");
+}
+
+#submitBtn {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 3px 15px 5px 15px;
+}
+#submitBtn:hover {
+  background-color: #FFFFFF;
+  color: #19341E;
+}
+
+.form-control {
+  border: none;
+  line-height: 1.7rem;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: none;
+}
+
+input[type=radio]:checked, input[type=radio]:focus {
+  box-shadow: none;
+  background-color: #19341E;
+  border: none;
 }/*# sourceMappingURL=contact.css.map */

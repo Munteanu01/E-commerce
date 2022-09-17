@@ -18,3 +18,29 @@ body{
 .navbar-toggler-icon{
     background-image: url('/assets/img/menu\ \(1\).png');
 }
+#submitBtn{
+    background-color: transparent;
+    color: $secondaryColor;
+    border: 2px solid $secondaryColor;
+    border-radius: 10px;
+    padding: 3px 15px 5px 15px;
+    &:hover{
+        background-color: $secondaryColor;
+        color: $contactColor;
+    }
+}
+.form-control{
+    border: none;
+    line-height: 1.7rem;
+}
+.form-control:focus{
+    box-shadow: none;
+    border: none;
+}
+input[type=radio]{
+    &:checked, &:focus{
+    box-shadow: none;
+    background-color: $contactColor;
+    border: none;
+    }
+}
