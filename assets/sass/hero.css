@@ -29,8 +29,6 @@
 
 .contact {
   border: 2px solid #000000;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
   border-bottom: none;
   width: 300px;
 }
@@ -77,7 +75,6 @@ body {
   text-decoration: none;
   color: #000000;
   border: 2px solid #000000;
-  border-radius: 30px;
 }
 .plantsLink:hover, .plantersLink:hover {
   color: #FFFFFF;
