@@ -62,16 +62,20 @@ body {
 
 .form-control {
   border: none;
+  border-radius: 0;
   line-height: 1.7rem;
 }
 
 .form-control:focus {
-  box-shadow: none;
+  box-shadow: #000000 0px 0px 0px 4px;
   border: none;
 }
 
-input[type=radio]:checked, input[type=radio]:focus {
-  box-shadow: none;
-  background-color: #19341E;
-  border: none;
+#contactBImage {
+  width: 200px;
+}
+@media (max-width: 992px) {
+  #contactBImage {
+    display: none;
+  }
 }/*# sourceMappingURL=contact.css.map */
