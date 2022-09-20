@@ -6,6 +6,7 @@ body{
     background-color: $backgroundColor;
     color: $primaryColor;
     font-family: $font;
+    overflow-x:hidden;
 }
 .showcase img{
     max-width: 280px;

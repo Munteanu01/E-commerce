@@ -30,6 +30,7 @@ body {
   background-color: #19341E;
   color: #FFFFFF;
   font-family: "Lato", sans-serif;
+  overflow: hidden;
 }
 
 .offcanvas-start {
