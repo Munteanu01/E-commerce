@@ -48,4 +48,12 @@ body {
   background-color: #FFF9F0;
   color: #000000;
   font-family: "Lato", sans-serif;
+}
+
+.showcase img {
+  max-width: 280px;
+}
+
+.showcase p {
+  font-weight: 300;
 }/*# sourceMappingURL=planters.css.map */

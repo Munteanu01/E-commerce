@@ -7,3 +7,9 @@ body{
     color: $primaryColor;
     font-family: $font;
 }
+.showcase img{
+    max-width: 280px;
+}
+.showcase p{
+    font-weight:300 ;
+}
