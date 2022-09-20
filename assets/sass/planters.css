@@ -51,10 +51,10 @@ body {
   overflow-x: hidden;
 }
 
-.showcase img {
-  max-width: 280px;
-}
-
 .showcase p {
-  font-weight: 300;
+  font-weight: lighter;
+  margin: 0;
+}
+.showcase img {
+  max-width: 400px;
 }/*# sourceMappingURL=planters.css.map */

@@ -8,9 +8,12 @@ body{
     font-family: $font;
     overflow-x:hidden;
 }
-.showcase img{
-    max-width: 280px;
-}
-.showcase p{
-    font-weight:300 ;
+.showcase{
+    p{
+    font-weight: lighter ;
+    margin:0;
+    }
+    img{
+        max-width: 400px;
+    }
 }
