@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+.navbar-toggler, .btn-close {
+  border: none;
+}
+.navbar-toggler:focus, .navbar-toggler :active, .navbar-toggler :focus, .btn-close:focus, .btn-close :active, .btn-close :focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("/assets/img/menu.png");
+}
+
+.logo {
+  width: 80px;
+}
+
+.cartIcon {
+  width: 37px;
+  margin: 0 12px 0 5px;
+}
+
+.offcanvas-start {
+  background-color: #FFF9F0;
+  font-size: 1.3rem;
+}
+
+.contact {
+  width: 300px;
+}
+@media (max-width: 576px) {
+  .contact {
+    width: 200px;
+  }
+}
+
+.contactIcon {
+  width: 25px;
+}
+
+.contactIcons {
+  justify-content: space-between;
+}
+
+body {
+  background-color: #FFF9F0;
+  color: #000000;
+  font-family: "Lato", sans-serif;
+}/*# sourceMappingURL=planters.css.map */
