@@ -55,8 +55,10 @@ body {
   font-weight: lighter;
   margin: 0;
 }
-.showcase img {
-  max-width: 350px;
+
+.item {
+  max-width: 440px;
+  background-size: cover;
 }
 
 .plus, .minus {
@@ -66,4 +68,8 @@ body {
 
 .minus {
   padding: 0 12.4px;
+}
+
+.sold {
+  padding: 5px;
 }/*# sourceMappingURL=planters.css.map */
