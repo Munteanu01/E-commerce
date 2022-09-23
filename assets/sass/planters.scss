@@ -27,12 +27,30 @@ body{
 }
 .sold{
     padding: 5px;
-    
 }
-#filter{
+#filter, .filterBtns{
     border: none;
     background-color: transparent;
 }
 .filterBtns{
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+    width: 300px;
+    padding: 0 0 10px 20px;
+    border-bottom: 1px solid $primaryColor;
+}
+
+.search{
+    border: 1px solid $primaryColor;
+    width: 300px;
+    font-size: 1.1rem;
+    background-color: transparent;
+    padding: 10px 81px 10px 50px;
+    background-image:url('/assets/img/magnifying-glass.png');
+    background-size: 17px;
+    background-position:left;
+    background-position-x:20px;
+    background-repeat: no-repeat;
+    &:focus{
+        outline: none;
+    }
 }
