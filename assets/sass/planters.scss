@@ -36,11 +36,12 @@ body{
     font-size: 1.1rem;
     width: 300px;
     padding: 0 0 10px 20px;
+    margin-top: 25px ;
     border-bottom: 1px solid $primaryColor;
 }
-
 .search{
     border: 1px solid $primaryColor;
+    margin-top: 35px;
     width: 300px;
     font-size: 1.1rem;
     background-color: transparent;
@@ -53,4 +54,9 @@ body{
     &:focus{
         outline: none;
     }
+}
+.filters{
+    padding-left: 20px;
+    font-size: 1.05rem;
+    text-decoration: none;
 }
