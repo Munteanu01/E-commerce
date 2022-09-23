@@ -4,3 +4,4 @@ ScrollReveal().reveal('.plantersText',{ delay: 500 ,origin:'left', distance: '20
 ScrollReveal().reveal('.plantsLink',{ delay: 2000});
 ScrollReveal().reveal('.plantersLink',{ delay: 2000});
 
+

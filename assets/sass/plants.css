@@ -118,4 +118,15 @@ body {
 
 .sold {
   padding: 5px;
+}
+
+#filter {
+  padding: 0;
+}
+#filter:active {
+  border: none;
+}
+
+.filterBtns {
+  font-size: 1.15rem;
 }/*# sourceMappingURL=plants.css.map */
