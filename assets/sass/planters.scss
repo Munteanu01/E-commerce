@@ -36,7 +36,7 @@ body{
     font-size: 1.1rem;
     width: 300px;
     padding: 0 0 10px 20px;
-    margin-top: 25px ;
+    margin: 25px 0 8px 0 ;
     border-bottom: 1px solid $primaryColor;
 }
 .search{
@@ -59,4 +59,9 @@ body{
     padding-left: 20px;
     font-size: 1.05rem;
     text-decoration: none;
+    line-height: 2.3rem;
+    color: #898582;
+    &:hover{
+        color: #898582;
+    }
 }
