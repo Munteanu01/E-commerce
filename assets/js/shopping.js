@@ -1,3 +1,4 @@
+//FILTER ON CLICK
 const filter = document.querySelector('#filter');
 const filterPlus = document.querySelector('.filterPlus');
 const filterMinus = document.querySelector('.filterMinus');
@@ -30,4 +31,38 @@ colorBtn.addEventListener('click', () => {
 sizeBtn.addEventListener('click', () => {
     sizeDiv.classList.toggle('d-none');
 })
+
+//ITEMS
+const plantersItems = [
+    {product:'OBJ 1',
+    color:'Cream',
+    size:'M',
+    price:'15$',
+    availability:'Out of stock'},
+    {product:'OBJ 1',
+    color:'Charcoal',
+    size:'L',
+    price:'30$',
+    availability:'In stock'},
+    {product:'OBJ 1',
+    color:'Cream',
+    size:'L',
+    price:'30$',
+    availability:'In stock'},
+    {product:'OBJ 2',
+    color:'Cream',
+    size:'L',
+    price:'25$',
+    availability:'In stock'},
+    {product:'OBJ 2',
+    color:'Charcoal',
+    size:'L',
+    price:'25$',
+    availability:'In stock'},
+    {product:'OBJ 2',
+    color:'Cream',
+    size:'M',
+    price:'15$',
+    availability:'Out of stock'}
+]
 
