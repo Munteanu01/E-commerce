@@ -2,14 +2,11 @@
 const filter = document.querySelector('#filter');
 const filterPlus = document.querySelector('.filterPlus');
 const filterMinus = document.querySelector('.filterMinus');
-const filterDiv = document.querySelectorAll('.filterDiv');
-const item = document.querySelectorAll('.item');
+const filterDiv = document.querySelector('.filterDiv');
 filter.addEventListener('click', () => {
-    filterPlus.classList.toggle('d-none')
-    filterMinus.classList.toggle('d-none')
-    filterDiv.forEach(filterDiv => {
-        filterDiv.classList.toggle('d-none');
-    })
+    filterPlus.classList.toggle('d-none');
+    filterMinus.classList.toggle('d-none');
+    filterDiv.classList.toggle('d-none');
 })
 const availabilityBtn = document.querySelector('.availabilityBtn');
 const availabilityDiv = document.querySelector('.availabilityDiv');
