@@ -110,7 +110,10 @@ body {
   text-decoration: none;
   line-height: 2.3rem;
   color: #898582;
+  background-color: transparent;
+  border: none;
 }
 .filters:hover {
   color: #898582;
-}/*# sourceMappingURL=planters.css.map */
+  color: #000000;
+}/*# sourceMappingURL=shop.css.map */
