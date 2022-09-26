@@ -59,3 +59,12 @@ const plantersItems = [
     availability:'Out of stock'}
 ]
 
+//FILTERS
+const filters = document.querySelectorAll('.filters');
+filters.forEach(filter => {
+    filter.addEventListener('click',() => {
+        filter.classList.toggle('filtersOnClick')
+    })
+})
+
+

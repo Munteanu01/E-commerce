@@ -114,6 +114,9 @@ body {
   border: none;
 }
 .filters:hover {
-  color: #898582;
+  color: #000000;
+}
+
+.filtersOnClick {
   color: #000000;
 }/*# sourceMappingURL=shop.css.map */

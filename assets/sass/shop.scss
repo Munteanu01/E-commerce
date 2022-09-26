@@ -64,7 +64,9 @@ body{
     background-color: transparent;
     border: none;
     &:hover{
-        color: #898582;
         color: $primaryColor;
     }
+}
+.filtersOnClick{
+    color: $primaryColor;
 }
