@@ -40,3 +40,38 @@ document.querySelector('.filterInStock').addEventListener('click', () =>{
             }
         })
 })
+document.querySelector('.filterOutOfStock').addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('+')){
+            item.classList.toggle('d-none')
+        }
+    })
+})
+document.querySelector('.filterCharcoal').addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('Cream')){
+            item.classList.toggle('d-none')
+        }
+    })
+})
+document.querySelector('.filterCream').addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('Charcoal')){
+            item.classList.toggle('d-none')
+        }
+    })
+})
+document.querySelector('.filterMedium').addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes(', L')){
+            item.classList.toggle('d-none')
+        }
+    })
+})
+document.querySelector('.filterLarge').addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes(', M')){
+            item.classList.toggle('d-none')
+        }
+    })
+})
