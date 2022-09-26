@@ -66,5 +66,3 @@ filters.forEach(filter => {
         filter.classList.toggle('filtersOnClick')
     })
 })
-
-
