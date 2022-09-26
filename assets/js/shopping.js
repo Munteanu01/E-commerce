@@ -24,45 +24,19 @@ colorBtn.addEventListener('click', () => {
 sizeBtn.addEventListener('click', () => {
     sizeDiv.classList.toggle('d-none');
 })
-
-//ITEMS
-const plantersItems = [
-    {product:'OBJ 1',
-    color:'Cream',
-    size:'M',
-    price:'15$',
-    availability:'Out of stock'},
-    {product:'OBJ 1',
-    color:'Charcoal',
-    size:'L',
-    price:'30$',
-    availability:'In stock'},
-    {product:'OBJ 1',
-    color:'Cream',
-    size:'L',
-    price:'30$',
-    availability:'In stock'},
-    {product:'OBJ 2',
-    color:'Cream',
-    size:'L',
-    price:'25$',
-    availability:'In stock'},
-    {product:'OBJ 2',
-    color:'Charcoal',
-    size:'L',
-    price:'25$',
-    availability:'In stock'},
-    {product:'OBJ 2',
-    color:'Cream',
-    size:'M',
-    price:'15$',
-    availability:'Out of stock'}
-]
-
-//FILTERS
 const filters = document.querySelectorAll('.filters');
 filters.forEach(filter => {
     filter.addEventListener('click',() => {
         filter.classList.toggle('filtersOnClick')
     })
+})
+
+//FILTERS
+let items = document.querySelectorAll('.item')
+document.querySelector('.filterInStock').addEventListener('click', () =>{
+        items.forEach(item => {
+            if(item.textContent.includes('SOLD OUT')){
+                item.classList.toggle('d-none')
+            }
+        })
 })
