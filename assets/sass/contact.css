@@ -31,6 +31,11 @@ body {
   color: #FFFFFF;
   font-family: "Lato", sans-serif;
   overflow: hidden;
+  height: 100vh;
+}
+
+form {
+  height: 75vh;
 }
 
 .offcanvas-start {

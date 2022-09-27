@@ -6,6 +6,10 @@ body{
     color: $secondaryColor;
     font-family: $font;
     overflow: hidden;
+    height: 100vh;
+}
+form{
+    height: 75vh;
 }
 .offcanvas-start{
     background-color: $contactColor;
