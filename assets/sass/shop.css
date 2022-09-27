@@ -119,4 +119,8 @@ body {
 
 .filtersOnClick {
   color: #000000;
+}
+
+.instockdnone, .outstockdnone, .charcoaldnone, .creamdnone, .mdnone, .ldnone {
+  display: none;
 }/*# sourceMappingURL=shop.css.map */

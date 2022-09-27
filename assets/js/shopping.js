@@ -34,69 +34,10 @@ filters.forEach(filter => {
 //FILTERS
 let items = document.querySelectorAll('.item')
 
-const inStock = document.querySelector('.filterInStock')
-inStock.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes('+')){
-            item.classList.add('d-block')
-            }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
-const outStock = document.querySelector('.filterOutOfStock')
-outStock.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes('SOLD OUT')){
-            item.classList.add('d-block')
-        }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
-const charcoal = document.querySelector('.filterCharcoal')
-charcoal.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes('Charcoal')){
-            item.classList.add('d-block')
-        }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
-const cream = document.querySelector('.filterCream')
-cream.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes('Cream')){
-            item.classList.add('d-block')
-        }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
-const medium = document.querySelector('.filterMedium')
-medium.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes(', M')){
-            item.classList.add('d-block')
-        }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
-const large = document.querySelector('.filterLarge')
-large.addEventListener('click', () =>{
-    items.forEach(item => {
-        if(item.textContent.includes(', L')){
-            item.classList.add('d-block')
-        }
-        else{
-            item.classList.add('d-none')
-        }
-    })
-})
+document.querySelector('.filterInStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}})})
+document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}})})
+document.querySelector('.filterCharcoal').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Cream')){item.classList.toggle('charcoaldnone')}})})
+document.querySelector('.filterCream').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Charcoal')){item.classList.toggle('creamdnone')}})})
+document.querySelector('.filterMedium').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', L')){item.classList.toggle('mdnone')}})})
+document.querySelector('.filterLarge').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}})})
+
