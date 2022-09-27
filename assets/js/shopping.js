@@ -33,45 +33,70 @@ filters.forEach(filter => {
 
 //FILTERS
 let items = document.querySelectorAll('.item')
-document.querySelector('.filterInStock').addEventListener('click', () =>{
-        items.forEach(item => {
-            if(item.textContent.includes('SOLD OUT')){
-                item.classList.toggle('d-none')
-            }
-        })
-})
-document.querySelector('.filterOutOfStock').addEventListener('click', () =>{
+
+const inStock = document.querySelector('.filterInStock')
+inStock.addEventListener('click', () =>{
     items.forEach(item => {
         if(item.textContent.includes('+')){
-            item.classList.toggle('d-none')
+            item.classList.add('d-block')
+            }
+        else{
+            item.classList.add('d-none')
         }
     })
 })
-document.querySelector('.filterCharcoal').addEventListener('click', () =>{
+const outStock = document.querySelector('.filterOutOfStock')
+outStock.addEventListener('click', () =>{
     items.forEach(item => {
-        if(item.textContent.includes('Cream')){
-            item.classList.toggle('d-none')
+        if(item.textContent.includes('SOLD OUT')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
         }
     })
 })
-document.querySelector('.filterCream').addEventListener('click', () =>{
+const charcoal = document.querySelector('.filterCharcoal')
+charcoal.addEventListener('click', () =>{
     items.forEach(item => {
         if(item.textContent.includes('Charcoal')){
-            item.classList.toggle('d-none')
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
         }
     })
 })
-document.querySelector('.filterMedium').addEventListener('click', () =>{
+const cream = document.querySelector('.filterCream')
+cream.addEventListener('click', () =>{
     items.forEach(item => {
-        if(item.textContent.includes(', L')){
-            item.classList.toggle('d-none')
+        if(item.textContent.includes('Cream')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
         }
     })
 })
-document.querySelector('.filterLarge').addEventListener('click', () =>{
+const medium = document.querySelector('.filterMedium')
+medium.addEventListener('click', () =>{
     items.forEach(item => {
         if(item.textContent.includes(', M')){
-            item.classList.toggle('d-none')
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const large = document.querySelector('.filterLarge')
+large.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes(', L')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
         }
     })
 })
