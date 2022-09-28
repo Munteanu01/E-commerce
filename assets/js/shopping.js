@@ -35,6 +35,7 @@ filters.forEach(filter => {
 let items = document.querySelectorAll('.item')
 
 const inStock = document.querySelector('.filterInStock')
+<<<<<<< HEAD
 inStock.addEventListener('click', () =>{items.forEach(item => {
     if(inStock.checked == true && item.textContent.includes('SOLD OUT')){item.classList.add('instockdnone')}
     if(inStock.checked == false){item.classList.remove('instockdnone')}
@@ -67,3 +68,70 @@ large.addEventListener('click', () =>{items.forEach(item => {if(item.textContent
 
 
 
+=======
+inStock.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('+')){
+            item.classList.add('d-block')
+            }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const outStock = document.querySelector('.filterOutOfStock')
+outStock.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('SOLD OUT')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const charcoal = document.querySelector('.filterCharcoal')
+charcoal.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('Charcoal')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const cream = document.querySelector('.filterCream')
+cream.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes('Cream')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const medium = document.querySelector('.filterMedium')
+medium.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes(', M')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+const large = document.querySelector('.filterLarge')
+large.addEventListener('click', () =>{
+    items.forEach(item => {
+        if(item.textContent.includes(', L')){
+            item.classList.add('d-block')
+        }
+        else{
+            item.classList.add('d-none')
+        }
+    })
+})
+>>>>>>> parent of 9acc5ab (It works! kinda of...)
