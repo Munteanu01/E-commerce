@@ -36,13 +36,18 @@ let items = document.querySelectorAll('.item')
 
 const inStock = document.querySelector('.filterInStock')
 inStock.addEventListener('click', () =>{items.forEach(item => {
-    if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}
+    if(inStock.checked == true && item.textContent.includes('SOLD OUT')){item.classList.add('instockdnone')}
+    if(inStock.checked == false){item.classList.remove('instockdnone')}
+    
     if(inStock.checked == true && outStock.checked == true){item.classList.remove('instockdnone', 'outstockdnone')}
 })})
+
 const outStock = document.querySelector('.filterOutOfStock')
 outStock.addEventListener('click', () =>{items.forEach(item => {
-    if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}
-    if(inStock.checked == true && outStock.checked == true){item.classList.remove('outstockdnone', 'instockdnone')}
+    if(outStock.checked == true && item.textContent.includes('+')){item.classList.add('outstockdnone')}
+    if(outStock.checked == false){item.classList.remove('outstockdnone')}
+
+    if(outStock.checked == true && inStock.checked == true){item.classList.remove('outstockdnone', 'instockdnone')}
 })})
 
     
