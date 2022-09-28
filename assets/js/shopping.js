@@ -36,6 +36,7 @@ let items = document.querySelectorAll('.item')
 
 const inStock = document.querySelector('.filterInStock')
 <<<<<<< HEAD
+<<<<<<< HEAD
 inStock.addEventListener('click', () =>{items.forEach(item => {
     if(inStock.checked == true && item.textContent.includes('SOLD OUT')){item.classList.add('instockdnone')}
     if(inStock.checked == false){item.classList.remove('instockdnone')}
@@ -69,6 +70,8 @@ large.addEventListener('click', () =>{items.forEach(item => {if(item.textContent
 
 
 =======
+=======
+>>>>>>> parent of 9acc5ab (It works! kinda of...)
 inStock.addEventListener('click', () =>{
     items.forEach(item => {
         if(item.textContent.includes('+')){
@@ -134,4 +137,7 @@ large.addEventListener('click', () =>{
         }
     })
 })
+<<<<<<< HEAD
+>>>>>>> parent of 9acc5ab (It works! kinda of...)
+=======
 >>>>>>> parent of 9acc5ab (It works! kinda of...)
