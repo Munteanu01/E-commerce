@@ -33,9 +33,31 @@ filters.forEach(filter => {
 
 //FILTERS
 let items = document.querySelectorAll('.item')
-document.querySelector('.filterInStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}})})
-document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}})})
-document.querySelector('.filterCharcoal').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Cream')){item.classList.toggle('charcoaldnone')}})})
-document.querySelector('.filterCream').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Charcoal')){item.classList.toggle('creamdnone')}})})
-document.querySelector('.filterMedium').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', L')){item.classList.toggle('mdnone')}})})
-document.querySelector('.filterLarge').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}})})
+
+const instock = document.querySelector('.filterInStock')
+instock.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}
+    if(item.classList.contains('outstockdnone')){item.classList.toggle('outstockdnone');outstock.classList.remove('filtersOnClick')}})})
+const outstock = document.querySelector('.filterOutOfStock')
+outstock.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}
+    if(item.classList.contains('instockdnone')){item.classList.toggle('instockdnone');instock.classList.remove('filtersOnClick')}})})
+
+const charcoal = document.querySelector('.filterCharcoal')
+charcoal.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('Cream')){item.classList.toggle('charcoaldnone')}
+    if(item.classList.contains('creamdnone')){item.classList.toggle('creamdnone');cream.classList.remove('filtersOnClick')}})})
+const cream = document.querySelector('.filterCream')
+cream.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('Charcoal')){item.classList.toggle('creamdnone')}
+    if(item.classList.contains('charcoaldnone')){item.classList.toggle('charcoaldnone');charcoal.classList.remove('filtersOnClick')}})})
+
+const medium= document.querySelector('.filterMedium')
+medium.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes(', L')){item.classList.toggle('mdnone')}
+    if(item.classList.contains('ldnone')){item.classList.toggle('ldnone');large.classList.remove('filtersOnClick')}})})
+const large = document.querySelector('.filterLarge')
+large.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}
+    if(item.classList.contains('mdnone')){item.classList.toggle('mdnone');medium.classList.remove('filtersOnClick')}})})
+
