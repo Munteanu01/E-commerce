@@ -55,21 +55,6 @@ body{
         outline: none;
     }
 }
-.filters{
-    padding-left: 20px;
-    font-size: 1.05rem;
-    text-decoration: none;
-    line-height: 2.3rem;
-    color: #898582;
-    background-color: transparent;
-    border: none;
-    &:hover{
-        color: $primaryColor;
-    }
-}
-.filtersOnClick{
-    color: $primaryColor;
-}
 
 
 

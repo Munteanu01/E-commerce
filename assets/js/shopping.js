@@ -34,10 +34,37 @@ filters.forEach(filter => {
 //FILTERS
 let items = document.querySelectorAll('.item')
 
-document.querySelector('.filterInStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}})})
-document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}})})
-document.querySelector('.filterCharcoal').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Cream')){item.classList.toggle('charcoaldnone')}})})
-document.querySelector('.filterCream').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Charcoal')){item.classList.toggle('creamdnone')}})})
-document.querySelector('.filterMedium').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', L')){item.classList.toggle('mdnone')}})})
-document.querySelector('.filterLarge').addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}})})
+const inStock = document.querySelector('.filterInStock')
+inStock.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('SOLD OUT') && outStock.checked == false){item.classList.toggle('instockdnone')}
+    else if(inStock.checked && outStock.checked){
+        item.classList.remove('instockdnone', 'outstockdnone')
+    }
+
+})})
+const outStock = document.querySelector('.filterOutOfStock')
+outStock.addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('+') && inStock.checked == false){item.classList.toggle('outstockdnone')}
+    else if(inStock.checked && outStock.checked){
+        item.classList.remove('outstockdnone', 'instockdnone')
+    }
+
+})})
+
+    
+
+
+
+
+
+const charcoal = document.querySelector('.filterCharcoal')
+charcoal.addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Cream')){item.classList.toggle('charcoaldnone')}})})
+const cream = document.querySelector('.filterCream')
+cream.addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes('Charcoal')){item.classList.toggle('creamdnone')}})})
+const medium = document.querySelector('.filterMedium')
+medium.addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', L')){item.classList.toggle('mdnone')}})})
+const large = document.querySelector('.filterLarge')
+large.addEventListener('click', () =>{items.forEach(item => {if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}})})
+
+
 
