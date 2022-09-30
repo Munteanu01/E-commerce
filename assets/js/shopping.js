@@ -71,7 +71,7 @@ searchInput.addEventListener("input", e => {
 })
 
 //ADD & REMOVE BASKET
-
+const basket = document.querySelector('#basket')
 items.forEach(item => {
     let count = 0
     item.children[3].addEventListener('click', () => {
