@@ -74,18 +74,32 @@ searchInput.addEventListener("input", e => {
 const basket = document.querySelector('#basket')
 items.forEach(item => {
     let count = 0
+    let productImg = item.querySelector('img').src
+    let productName = item.querySelector('h5').textContent
+    let productPrice = item.querySelector('p').textContent
     item.children[3].addEventListener('click', () => {
     count++
-        console.log(count)
-        if(count > 0){
+    let productRow = document.createElement('div')
+    let productRowContent = `<div>
+                            <img class="cart-item-image" src="${productImg}" width="300" >
+                            <span>${productName}</span>
+                            <span>${productPrice}</span>
+                            </div>`;
+    
+    productRow.innerHTML = productRowContent;
+    basket.append(productRow)
+
+
+
+    if(count > 0){
             item.children[5].classList.remove('d-none')
             item.children[4].classList.remove('d-none')
             item.children[4].innerHTML = count;
-        }
+    }
     })
     item.children[5].addEventListener('click', () => {
     count--
-        console.log(count)
+        
         item.children[4].innerHTML = count;
         if(count < 1){
             item.children[5].classList.add('d-none')
@@ -93,5 +107,3 @@ items.forEach(item => {
     }
     })
 })
-
-
