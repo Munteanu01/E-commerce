@@ -123,21 +123,4 @@ body {
 
 .instockdnone, .outstockdnone, .charcoaldnone, .creamdnone, .mdnone, .ldnone {
   display: none;
-}
-
-.filters {
-  padding-left: 20px;
-  font-size: 1.05rem;
-  text-decoration: none;
-  line-height: 2.3rem;
-  color: #898582;
-  background-color: transparent;
-  border: none;
-}
-.filters:hover {
-  color: #000000;
-}
-
-.filtersOnClick {
-  color: #000000;
 }/*# sourceMappingURL=shop.css.map */
