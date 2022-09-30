@@ -69,3 +69,24 @@ searchInput.addEventListener("input", e => {
         console.log(!isVisible)
     })
 })
+
+//ADD & REMOVE BASKET
+const plus = document.querySelector('.plus')
+const minus = document.querySelector('.minus')
+let count = 0
+
+plus.addEventListener('click', () => {
+    count++
+        console.log(count)
+        if(count > 0){
+            minus.classList.remove('d-none')
+        }
+    })
+minus.addEventListener('click', () => {
+    count--
+    console.log(count)
+    if(count < 1){
+        minus.classList.add('d-none')
+    }
+})
+
