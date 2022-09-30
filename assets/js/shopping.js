@@ -78,13 +78,17 @@ items.forEach(item => {
     count++
         console.log(count)
         if(count > 0){
+            item.children[5].classList.remove('d-none')
             item.children[4].classList.remove('d-none')
+            item.children[4].innerHTML = count;
         }
     })
-    item.children[4].addEventListener('click', () => {
+    item.children[5].addEventListener('click', () => {
     count--
         console.log(count)
+        item.children[4].innerHTML = count;
         if(count < 1){
+            item.children[5].classList.add('d-none')
             item.children[4].classList.add('d-none')
     }
     })
