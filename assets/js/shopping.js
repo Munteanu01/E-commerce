@@ -74,16 +74,18 @@ searchInput.addEventListener("input", e => {
 const basket = document.querySelector('#basket')
 items.forEach(item => {
     let count = 0
-    let productImg = item.querySelector('img').src
-    let productName = item.querySelector('h5').textContent
-    let productPrice = item.querySelector('p').textContent
+    
+    
     item.children[3].addEventListener('click', () => {
     count++
+    localStorage.setItem('productImg', item.querySelector('img').src)
+    localStorage.setItem('productName', item.querySelector('h5').textContent)
+    localStorage.setItem('productPrice', item.querySelector('p').textContent)
     let productRow = document.createElement('div')
     let productRowContent = `<div>
-                            <img class="cart-item-image" src="${productImg}" width="300" >
-                            <span>${productName}</span>
-                            <span>${productPrice}</span>
+                            <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
+                            <span>${localStorage.getItem('productName')}</span>
+                            <span>${localStorage.getItem('productPrice')}</span>
                             </div>`;
     
     productRow.innerHTML = productRowContent;
