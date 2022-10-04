@@ -71,6 +71,7 @@ searchInput.addEventListener("input", e => {
 })
 
 //ADD & REMOVE BASKET
+const basket = document.querySelector('#basket')
 items.forEach(item => {
     let count = 0
     item.children[3].addEventListener('click', () => {
@@ -78,18 +79,27 @@ items.forEach(item => {
     localStorage.setItem('productImg', item.querySelector('img').src)
     localStorage.setItem('productName', item.querySelector('h5').textContent)
     localStorage.setItem('productPrice', item.querySelector('p').textContent)
-
+    let productRowHtml = `<div>
+                        <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
+                        <span>${localStorage.getItem('productName')}</span>
+                        <span>${localStorage.getItem('productPrice')}</span>
+                        </div>`;
+    let productRow = document.createElement('div')
+    productRow.innerHTML = productRowHtml
+    basket.append(productRow);
     if(count > 0){
             item.children[5].classList.remove('d-none')
             item.children[4].classList.remove('d-none')
             item.children[4].innerHTML = count;
     }
     })
+
+
     item.children[5].addEventListener('click', () => {
-    count--
-        
+    count--;
         item.children[4].innerHTML = count;
         if(count < 1){
+
             item.children[5].classList.add('d-none')
             item.children[4].classList.add('d-none')
     }
