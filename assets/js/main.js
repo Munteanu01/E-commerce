@@ -71,36 +71,39 @@ searchInput.addEventListener("input", e => {
 })
 
 //ADD & REMOVE BASKET
-let productsHtml = [];
-localStorage.setItem('productsHtml', productsHtml)
+let productsHtml = [''];
 items.forEach(item => {
-    let count = 0
-
+    let count = 0;
     item.children[3].addEventListener('click', () => {
-    count++
-    localStorage.setItem('counter', count)
-    console.log(localStorage.getItem('counter'))
-        if(count > 0){
-            item.children[5].classList.remove('d-none')
-            item.children[4].classList.remove('d-none')
-            item.children[4].innerHTML = count;
-            productsHtml.push(`<div>
+    count++;
+    productsHtml.push(     `<div>
                             <img class="cart-item-image" src="${item.querySelector('img').src}" width="300" >
                             <span>${item.querySelector('h5').textContent}</span>
                             <span>${item.querySelector('p').textContent}</span>
                             <span>${count}</span>
-                            </div>`)
-        }
+                            </div>`);
+    localStorage.setItem('productsHtml', productsHtml);
+
+    localStorage.setItem('counter', count);
+    console.log(localStorage.getItem('counter'));
+
+    if(count > 0){
+        item.children[5].classList.remove('d-none')
+        item.children[4].classList.remove('d-none')
+        item.children[4].innerHTML = count;
+    }
     })
+
+
     item.children[5].addEventListener('click', () => {
     count--
+    item.children[4].innerHTML = count;
     localStorage.setItem('counter', count)
     console.log(localStorage.getItem('counter'))
-        item.children[4].innerHTML = count;
-        if(count < 1){
-            item.children[5].classList.add('d-none')
-            item.children[4].classList.add('d-none')
-        }
+    if(count < 1){
+        item.children[5].classList.add('d-none')
+        item.children[4].classList.add('d-none')
+    }
     })
     
 })
