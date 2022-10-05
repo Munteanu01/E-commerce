@@ -1,3 +1,2 @@
 const basket = document.querySelector('#basket')
-
-console.log(localStorage.getItem('productsHtml'))
+basket.innerHTML = localStorage.getItem('productsHtml')

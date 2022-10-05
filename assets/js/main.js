@@ -81,14 +81,12 @@ items.forEach(item => {
     localStorage.setItem('productImg', item.querySelector('img').src)
     localStorage.setItem('productName', item.querySelector('h5').textContent)
     localStorage.setItem('productPrice', item.querySelector('p').textContent)
-    let productRow = document.createElement('div')
     let productRowContent = `<div>
                             <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
                             <span>${localStorage.getItem('productName')}</span>
                             <span>${localStorage.getItem('productPrice')}</span>
                             </div>`;
-    productRow.innerHTML = productRowContent;
-    productsHtml.push(productRow.innerHTML)
+    productsHtml.push(productRowContent)
     localStorage.setItem('productsHtml', productsHtml)
     console.log(localStorage.getItem('productsHtml'))
     
@@ -104,7 +102,6 @@ items.forEach(item => {
     })
     item.children[5].addEventListener('click', () => {
     count--
-        
         item.children[4].innerHTML = count;
         if(count < 1){
             item.children[5].classList.add('d-none')
