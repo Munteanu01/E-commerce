@@ -71,7 +71,7 @@ searchInput.addEventListener("input", e => {
 })
 
 //ADD & REMOVE BASKET
-const basket = document.querySelector('#basket')
+let productsHtml = [];
 items.forEach(item => {
     let count = 0
     
@@ -87,9 +87,12 @@ items.forEach(item => {
                             <span>${localStorage.getItem('productName')}</span>
                             <span>${localStorage.getItem('productPrice')}</span>
                             </div>`;
-    
     productRow.innerHTML = productRowContent;
-    basket.append(productRow)
+    productsHtml.push(productRow.innerHTML)
+    localStorage.setItem('productsHtml', productsHtml)
+    console.log(localStorage.getItem('productsHtml'))
+    
+
 
 
 
