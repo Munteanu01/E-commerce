@@ -78,14 +78,12 @@ items.forEach(item => {
     
     item.children[3].addEventListener('click', () => {
     count++
-    localStorage.setItem('productImg', item.querySelector('img').src)
-    localStorage.setItem('productName', item.querySelector('h5').textContent)
-    localStorage.setItem('productPrice', item.querySelector('p').textContent)
-     
+
     productsHtml.push(`<div>
-    <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
-    <span>${localStorage.getItem('productName')}</span>
-    <span>${localStorage.getItem('productPrice')}</span>
+    <img class="cart-item-image" src="${item.querySelector('img').src}" width="300" >
+    <span>${item.querySelector('h5').textContent}</span>
+    <span>${item.querySelector('p').textContent}</span>
+    <span>${count}</span>
     </div>`)
     localStorage.setItem('productsHtml', productsHtml)
     console.log(localStorage.getItem('productsHtml'))
