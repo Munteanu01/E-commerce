@@ -81,12 +81,12 @@ items.forEach(item => {
     localStorage.setItem('productImg', item.querySelector('img').src)
     localStorage.setItem('productName', item.querySelector('h5').textContent)
     localStorage.setItem('productPrice', item.querySelector('p').textContent)
-    let productRowContent = `<div>
-                            <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
-                            <span>${localStorage.getItem('productName')}</span>
-                            <span>${localStorage.getItem('productPrice')}</span>
-                            </div>`;
-    productsHtml.push(productRowContent)
+     
+    productsHtml.push(`<div>
+    <img class="cart-item-image" src="${localStorage.getItem('productImg')}" width="300" >
+    <span>${localStorage.getItem('productName')}</span>
+    <span>${localStorage.getItem('productPrice')}</span>
+    </div>`)
     localStorage.setItem('productsHtml', productsHtml)
     console.log(localStorage.getItem('productsHtml'))
     
