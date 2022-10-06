@@ -1,2 +1,7 @@
 const basket = document.querySelector('#basket')
-basket.innerHTML = localStorage.getItem('productsHtml')
+const products = JSON.parse(localStorage.getItem('products'))
+if (products) {
+    for (let product of products) {
+        basket.innerHTML += product.html
+    }
+}
