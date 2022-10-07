@@ -30,17 +30,20 @@ document.querySelector('.filterOutOfStock').addEventListener('click', () =>{item
     if(item.classList.contains('instockdnone')){item.classList.toggle('instockdnone');document.querySelector('.filterInStock').classList.remove('filtersOnClick')}})})
 document.querySelector('.filterBonsai').addEventListener('click', () =>{items.forEach(item => {
     if(!item.classList.contains('bonsai')){item.classList.toggle('bonsaidnone')}
-    if(item.classList.contains('treednone')){item.classList.toggle('treednone');document.querySelector('.filterTree').classList.remove('filtersOnClick')}
-    })})
+    if(item.classList.contains('treednone')){item.classList.toggle('treednone');document.querySelector('.filterTree').classList.remove('filtersOnClick')}})})
 document.querySelector('.filterTree').addEventListener('click', () =>{items.forEach(item => {
     if(!item.classList.contains('tree')){item.classList.toggle('treednone')}
-    if(item.classList.contains('bonsaidnone')){item.classList.toggle('bonsaidnone');document.querySelector('.filterBonsai').classList.remove('filtersOnClick')}
-    })})
+    if(item.classList.contains('bonsaidnone')){item.classList.toggle('bonsaidnone');document.querySelector('.filterBonsai').classList.remove('filtersOnClick')}})})
+document.querySelector('.filterBeginner').addEventListener('click', () =>{items.forEach(item => {
+    if(!item.classList.contains('beginner')){item.classList.toggle('beginnerdnone')}
+})})
+    
 
 
 
-    document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
-    document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
+
+
+document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
     document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
 
 
