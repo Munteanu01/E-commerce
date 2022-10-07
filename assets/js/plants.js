@@ -22,8 +22,12 @@ document.querySelectorAll('.filters').forEach(filter => {
 //FILTERS
 let items = document.querySelectorAll('.item')
 
-
-
+document.querySelector('.filterInStock').addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}
+    if(item.classList.contains('outstockdnone')){item.classList.toggle('outstockdnone');document.querySelector('.filterOutOfStock').classList.remove('filtersOnClick')}})})
+document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {
+    if(item.textContent.includes('+')){item.classList.toggle('outstockdnone')}
+    if(item.classList.contains('instockdnone')){item.classList.toggle('instockdnone');document.querySelector('.filterInStock').classList.remove('filtersOnClick')}})})
 
 
 
