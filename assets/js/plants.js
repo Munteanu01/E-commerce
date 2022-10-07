@@ -35,8 +35,11 @@ document.querySelector('.filterTree').addEventListener('click', () =>{items.forE
     if(!item.classList.contains('tree')){item.classList.toggle('treednone')}
     if(item.classList.contains('bonsaidnone')){item.classList.toggle('bonsaidnone');document.querySelector('.filterBonsai').classList.remove('filtersOnClick')}})})
 document.querySelector('.filterBeginner').addEventListener('click', () =>{items.forEach(item => {
-    if(!item.classList.contains('beginner')){item.classList.toggle('beginnerdnone')}
-})})
+    if(!item.classList.contains('beginner')){item.classList.toggle('beginnerdnone')}})})
+document.querySelector('.filterJapan').addEventListener('click', () =>{items.forEach(item => {
+    if(!item.classList.contains('japan')){item.classList.toggle('japandnone')}})})
+document.querySelector('.filterHardy').addEventListener('click', () =>{items.forEach(item => {
+    if(!item.classList.contains('hardy')){item.classList.toggle('hardydnone')}})})
     
 
 
