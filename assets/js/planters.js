@@ -47,7 +47,6 @@ document.querySelector('.search').addEventListener("input", e => {
     items.forEach(item => {
         const isVisible = item.children[1].textContent.toLowerCase().includes(value)
         item.classList.toggle('d-none', !isVisible)
-        console.log(!isVisible)
     })
 })
 

@@ -18,3 +18,25 @@ document.querySelectorAll('.filters').forEach(filter => {
         filter.classList.toggle('filtersOnClick')
     })
 })
+
+let items = document.querySelectorAll('.item')
+
+
+
+
+
+
+
+
+
+
+
+
+//SEARCH
+document.querySelector('.search').addEventListener("input", e => {
+    const value = e.target.value.toLowerCase();
+    items.forEach(item => {
+        const isVisible = item.children[1].textContent.toLowerCase().includes(value)
+        item.classList.toggle('d-none', !isVisible)
+    })
+})
