@@ -4,14 +4,14 @@ document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterMinus').classList.toggle('d-none');
     document.querySelector('.filterDiv').classList.toggle('d-none');
 })
-document.querySelector('.availabilityBtn').addEventListener('click', () => {
-    document.querySelector('.availabilityDiv').classList.toggle('d-none');
+document.querySelector('.firstBtn').addEventListener('click', () => {
+    document.querySelector('.firstDiv').classList.toggle('d-none');
 })
-document.querySelector('.colorBtn').addEventListener('click', () => {
-    document.querySelector('.colorDiv').classList.toggle('d-none');
+document.querySelector('.secondBtn').addEventListener('click', () => {
+    document.querySelector('.secondDiv').classList.toggle('d-none');
 })
-document.querySelector('.sizeBtn').addEventListener('click', () => {
-    document.querySelector('.sizeDiv').classList.toggle('d-none');
+document.querySelector('.thirdBtn').addEventListener('click', () => {
+    document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
 document.querySelectorAll('.filters').forEach(filter => {
     filter.addEventListener('click',() => {
@@ -19,10 +19,8 @@ document.querySelectorAll('.filters').forEach(filter => {
     })
 })
 
-
 //FILTERS
 let items = document.querySelectorAll('.item')
-
 
 document.querySelector('.filterInStock').addEventListener('click', () =>{items.forEach(item => {
     if(item.textContent.includes('SOLD OUT')){item.classList.toggle('instockdnone')}
@@ -42,8 +40,6 @@ document.querySelector('.filterMedium').addEventListener('click', () =>{items.fo
 document.querySelector('.filterLarge').addEventListener('click', () =>{items.forEach(item => {
     if(item.textContent.includes(', M')){item.classList.toggle('ldnone')}
     if(item.classList.contains('mdnone')){item.classList.toggle('mdnone');document.querySelector('.filterMedium').classList.remove('filtersOnClick')}})})
-
-
 
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
@@ -65,8 +61,8 @@ items.forEach(item => {
     const showOptions = () => {
         item.children[5].classList.remove('d-none')
         item.children[4].classList.remove('d-none')
-        item.children[4].innerText = count
-    }
+        item.children[4].innerText = count}
+    if (count > 0) showOptions()
 
     const getProductHtml = productCount => {
         return `<div>
@@ -77,7 +73,7 @@ items.forEach(item => {
         </div>`
     }
 
-    if (count > 0) showOptions()
+
 
     const addToBasket = (item, basket) => {
         const storagedProducts = basket ? JSON.stringify([...basket, item]) : JSON.stringify([item])
