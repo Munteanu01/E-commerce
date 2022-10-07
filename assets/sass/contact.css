@@ -9,7 +9,7 @@
 }
 
 .navbar-toggler-icon {
-  background-image: url("/assets/img/menu.png");
+  background-image: url("/assets/img/icons/menu.png");
 }
 
 .logo {
@@ -51,7 +51,7 @@ form {
 }
 
 .navbar-toggler-icon {
-  background-image: url("/assets/img/menu (1).png");
+  background-image: url("/assets/img/icons/menu (1).png");
 }
 
 #submitBtn {
