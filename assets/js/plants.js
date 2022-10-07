@@ -19,6 +19,7 @@ document.querySelectorAll('.filters').forEach(filter => {
     })
 })
 
+//FILTERS
 let items = document.querySelectorAll('.item')
 
 
