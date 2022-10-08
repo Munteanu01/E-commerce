@@ -67,6 +67,12 @@ plants = [
     "collection":"japan"},]
 
 //FILTER
+const filterInStock = document.querySelector('.filterInStock')
+const filterOutStock = document.querySelector('.filterOutStock')
+filterInStock.addEventListener('click', () => {
+    let plantsInStock = plants.filter(plant => plant.availability === 'in')
+    console.log(plantsInStock)
+})
 
 
 
