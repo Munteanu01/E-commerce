@@ -1,3 +1,46 @@
+//PLANTS
+plants = [
+    {"name":"Juniperus Bonsai",
+    "price":45,
+    "availability":"in",
+    "type":"bonsai",
+    "collection":"japan"},
+    {"name":"Phyllanthus Mirabilis",
+    "price":20,
+    "availability":"in",
+    "type":"",
+    "collection":"hardy"},
+    {"name":"Juniperus Chinensis Shimpaku Kishu",
+    "price":60,
+    "availability":"in",
+    "type":"bonsai",
+    "collection":"japan"},
+    {"name":"Monstera Deliciosa",
+    "price":25,
+    "availability":"in",
+    "type":"",
+    "collection":"beginner"},
+    {"name":"Olive Tree",
+    "price":35,
+    "availability":"in",
+    "type":"tree",
+    "collection":"japan"},
+    {"name":"Everfresh Tree",
+    "price":50,
+    "availability":"in",
+    "type":"tree",
+    "collection":"japan"},
+    {"name":"Pachira Aquatica",
+    "price":15,
+    "availability":"out",
+    "type":"",
+    "collection":"beginner"},
+    {"name":"Variegated Juniper Bonsai",
+    "price":40,
+    "availability":"in",
+    "type":"bonsai",
+    "collection":"japan"},]
+
 //FILTER ON CLICK
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
@@ -59,19 +102,6 @@ filter.addEventListener('click', () => {
     })
 })
 })
-
-
-
-
-
-document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
-    document.querySelector('.filterOutOfStock').addEventListener('click', () =>{items.forEach(item => {})})
-
-
-
-
-
-
 
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
