@@ -18,13 +18,13 @@ document.querySelectorAll('.filters').forEach(filter => {
     filter.addEventListener('click',() => {
         filter.classList.toggle('filtersOnClick')
         items.forEach(item => {
-            item.classList.toggle('d-none')
+            item.classList.add('d-none')
         })
     })
 })
 
 //PLANTS
-plants = [
+const plants = [
     {"name":"Juniperus Bonsai",
     "price":45,
     "availability":"in",
@@ -75,12 +75,46 @@ plants = [
     "image":"img/plants/Wind-Swept_t.jpeg"},]
 
 //FILTER
+const showcase = document.querySelector('.showcase')
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
+
+
+
+
+let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
-    let plantsInStock = plants.filter(plant => plant.availability === 'in')
-    console.log(plantsInStock)
+    if(filterInStock.classList.contains('filtersOnClick')){
+        plantsInStock.forEach(plant => {
+        let productHtml = ` <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+                            <img class="img-fluid" src="img/plants/IMG_8775.jpeg" alt="">
+                            <h5>Juniperus Bonsai</h5>
+                            <p>45$</p>
+                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                            </div>`
+        let product = document.createElement('div')
+        product.innerHTML = productHtml
+        showcase.append(product)
+        })
+    }
 })
+
+
+filterOutStock.addEventListener('click', () => {
+    if(filterOutStock.classList.contains('filtersOnClick')){
+    let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+
+        
+    }
+})
+
+
+
+
+
+
+
+
 
 
 
