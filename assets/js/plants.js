@@ -17,9 +17,6 @@ document.querySelector('.thirdBtn').addEventListener('click', () => {
 document.querySelectorAll('.filters').forEach(filter => {
     filter.addEventListener('click',() => {
         filter.classList.toggle('filtersOnClick')
-        items.forEach(item => {
-            item.classList.add('d-none')
-        })
     })
 })
 
@@ -78,9 +75,10 @@ const plants = [
 const showcase = document.querySelector('.showcase')
 
 const filterInStock = document.querySelector('.filterInStock')
+
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
-    if(filterInStock.classList.contains('filtersOnClick')){
+    if(filterInStock.checked){
         plantsInStock.forEach(plant => {
         let productHtml = ` <img class="img-fluid" src="${plant.image}" alt="">
                             <h5>${plant.name}</h5>
@@ -92,7 +90,13 @@ filterInStock.addEventListener('click', () => {
         showcase.append(product)
         })
     }
+    if(!filterInStock.checked){
+        console.log('noboss')
+    }
+   
 })
+
+
 
 const filterOutStock = document.querySelector('.filterOutStock')
 let plantsOutStock = plants.filter(plant => plant.availability === 'out')
