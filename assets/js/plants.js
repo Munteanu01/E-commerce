@@ -86,13 +86,12 @@ let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
     if(filterInStock.classList.contains('filtersOnClick')){
         plantsInStock.forEach(plant => {
-        let productHtml = ` <div class="col-lg-4 col-sm-6 mt-0  text-center item">
-                            <img class="img-fluid" src="img/plants/IMG_8775.jpeg" alt="">
+        let productHtml = ` <img class="img-fluid" src="img/plants/IMG_8775.jpeg" alt="">
                             <h5>Juniperus Bonsai</h5>
                             <p>45$</p>
-                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                            </div>`
+                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>`
         let product = document.createElement('div')
+        product.className = 'col-lg-4 col-sm-6 mt-0 text-center item'
         product.innerHTML = productHtml
         showcase.append(product)
         })
