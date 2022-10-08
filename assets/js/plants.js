@@ -76,19 +76,15 @@ const plants = [
 
 //FILTER
 const showcase = document.querySelector('.showcase')
+
 const filterInStock = document.querySelector('.filterInStock')
-const filterOutStock = document.querySelector('.filterOutStock')
-
-
-
-
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
     if(filterInStock.classList.contains('filtersOnClick')){
         plantsInStock.forEach(plant => {
-        let productHtml = ` <img class="img-fluid" src="img/plants/IMG_8775.jpeg" alt="">
-                            <h5>Juniperus Bonsai</h5>
-                            <p>45$</p>
+        let productHtml = ` <img class="img-fluid" src="${plant.image}" alt="">
+                            <h5>${plant.name}</h5>
+                            <p>${plant.price}$</p>
                             <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>`
         let product = document.createElement('div')
         product.className = 'col-lg-4 col-sm-6 mt-0 text-center item'
@@ -98,12 +94,20 @@ filterInStock.addEventListener('click', () => {
     }
 })
 
-
+const filterOutStock = document.querySelector('.filterOutStock')
+let plantsOutStock = plants.filter(plant => plant.availability === 'out')
 filterOutStock.addEventListener('click', () => {
     if(filterOutStock.classList.contains('filtersOnClick')){
-    let plantsOutStock = plants.filter(plant => plant.availability === 'out')
-
-        
+        plantsOutStock.forEach(plant => {
+        let productHtml = ` <img class="img-fluid" src="${plant.image}" alt="">
+                            <h5>${plant.name}</h5>
+                            <p>${plant.price}$</p>
+                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>`
+        let product = document.createElement('div')
+        product.className = 'col-lg-4 col-sm-6 mt-0 text-center item'
+        product.innerHTML = productHtml
+        showcase.append(product)
+        })
     }
 })
 
