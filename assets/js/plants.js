@@ -78,20 +78,26 @@ const filterInStock = document.querySelector('.filterInStock')
 
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
-    if(filterInStock.checked){
-        plantsInStock.forEach(plant => {
-        let productHtml = ` <img class="img-fluid" src="${plant.image}" alt="">
+    plantsInStock.forEach(plant => {
+    let productHtml = ` <img class="img-fluid" src="${plant.image}" alt="">
                             <h5>${plant.name}</h5>
                             <p>${plant.price}$</p>
                             <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>`
-        let product = document.createElement('div')
-        product.className = 'col-lg-4 col-sm-6 mt-0 text-center item'
-        product.innerHTML = productHtml
-        showcase.append(product)
+    let product = document.createElement('div')
+    product.className = 'col-lg-4 col-sm-6 mt-0 text-center item'
+    product.innerHTML = productHtml
+    showcase.append(product)
+    })
+    if(filterInStock.checked){
+        items.forEach(item => {
+            item.classList.add('d-none')
         })
     }
     if(!filterInStock.checked){
         console.log('noboss')
+        items.forEach(item => {
+            item.classList.remove('d-none')
+        })
     }
    
 })
