@@ -74,12 +74,13 @@ const plants = [
 
 
 //FILTER
-let filteredProducts = document.querySelector('.filtered')
+let filteredDiv = document.querySelector('.filtered')
+let productsDiv = document.querySelector('.productsDiv')
 
 const filterInStock = document.querySelector('.filterInStock')
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
-    filteredArr = []
+    filteredArr = [];
     plantsInStock.forEach(plant => {
     let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                             <img class="img-fluid" src="${plant.image}" alt="">
@@ -88,20 +89,16 @@ filterInStock.addEventListener('click', () => {
                             <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
                         </div>`;
     filteredArr.push(productHtml)})
-
     if(filterInStock.checked){
-        filteredProducts.innerHTML = filteredArr
-        filteredProducts.classList.remove('d-none')
-        items.forEach(item => {
-            item.classList.add('d-none')
-        })
+        console.log('checked')
+        filteredDiv.innerHTML = filteredArr;
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
     }
     if(!filterInStock.checked){
-        filteredProducts.innerHTML = null
-        filteredProducts.classList.add('d-none')
-        items.forEach(item => {
-            item.classList.remove('d-none')
-        })
+        console.log('unchecked')
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
     }
 
 })
