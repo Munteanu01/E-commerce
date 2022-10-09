@@ -90,6 +90,11 @@ filterInStock.addEventListener('click', () => {
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
+    if(filterInStock.checked && filterOutStock.checked){
+        filterInStock.nextSibling.classList.add('filtersOnClick')
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
     if(!filterInStock.checked){
         filteredDiv.classList.add('d-none')
         productsDiv.classList.remove('d-none')
@@ -115,6 +120,11 @@ filterOutStock.addEventListener('click', () => {
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
+    }
+    if(filterOutStock.checked && filterInStock.checked ){
+        filterInStock.nextSibling.classList.add('filtersOnClick')
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
     }
     if(!filterOutStock.checked){
         filterOutStock.nextSibling.classList.remove('filtersOnClick')
