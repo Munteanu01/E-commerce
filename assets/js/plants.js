@@ -91,7 +91,7 @@ filterInStock.addEventListener('click', () => {
     filteredArr.push(productHtml)})
     if(filterInStock.checked){
         console.log('checked')
-        filteredDiv.innerHTML = filteredArr;
+        filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
