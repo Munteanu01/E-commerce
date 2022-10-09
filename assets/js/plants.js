@@ -90,19 +90,38 @@ filterInStock.addEventListener('click', () => {
                         </div>`;
     filteredArr.push(productHtml)})
     if(filterInStock.checked){
-        console.log('checked')
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
     if(!filterInStock.checked){
-        console.log('unchecked')
         filteredDiv.classList.add('d-none')
         productsDiv.classList.remove('d-none')
     }
-
 })
 
+const filterOutStock = document.querySelector('.filterOutStock')
+let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+filterOutStock.addEventListener('click', () => {
+    filteredArr = [];
+    plantsOutStock.forEach(plant => {
+    let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                            <img class="img-fluid" src="${plant.image}" alt="">
+                            <h5>${plant.name}</h5>
+                            <p>${plant.price}$</p>
+                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                        </div>`;
+    filteredArr.push(productHtml)})
+    if(filterOutStock.checked){
+        filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
+    if(!filterOutStock.checked){
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
+})
 
 
 
