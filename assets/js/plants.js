@@ -1,5 +1,4 @@
 //FILTER ON CLICK
-const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
     document.querySelector('.filterMinus').classList.toggle('d-none');
@@ -14,7 +13,11 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
-
+const filters = document.querySelectorAll('.filters')
+filters.forEach(filter => {
+    filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+    !filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+})
 //PLANTS
 const plants = [
     {"name":"Juniperus Bonsai",
@@ -89,25 +92,23 @@ const filterFunction = function() {
 plantsInStock.forEach(plant => {filterFunction();});
 plantsOutStock.forEach(plant => {filterFunction();});
 
+
+
 filteredArr = [];
 filterInStock.addEventListener('click', () => {
         if(filterInStock.checked){
-            filterInStock.nextSibling.classList.add('filtersOnClick')
             filteredArr.push(plantsInStock)
         }
         if(!filterInStock.checked){
-            filterInStock.nextSibling.classList.remove('filtersOnClick')
             filteredArr.pop(plantsInStock)
         }
         console.log(filteredArr)
     })
 filterOutStock.addEventListener('click', () => {
         if(filterOutStock.checked){
-            filterOutStock.nextSibling.classList.add('filtersOnClick')
             filteredArr.push(plantsOutStock)
         }
         if(!filterOutStock.checked){
-            filterOutStock.nextSibling.classList.remove('filtersOnClick')
             filteredArr.pop(plantsOutStock)
         }
         console.log(filteredArr)
