@@ -1,4 +1,5 @@
 //FILTER ON CLICK
+const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
     document.querySelector('.filterMinus').classList.toggle('d-none');
@@ -13,15 +14,13 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
-filtersCheckbox = document.querySelectorAll('input[type=checkbox]')
-filtersCheckbox.forEach(filterCheckbox => {
-    filterCheckbox.addEventListener('click', () => {
-        filterCheckbox.checked ? filterCheckbox.nextSibling.classList.add('filtersOnClick') :null
-        !filterCheckbox.checked ? filterCheckbox.nextSibling.classList.remove('filtersOnClick') :null
+const filters = document.querySelectorAll('input[type="checkbox"')
+filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
     })
 })
-
-
 //PLANTS
 const plants = [
     {"name":"Juniperus Bonsai",
@@ -76,45 +75,89 @@ const plants = [
 
 
 //FILTER
-let filteredDiv = document.querySelector('.filtered')
+let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
 
 const filterInStock = document.querySelector('.filterInStock')
-const filterOutStock = document.querySelector('.filterOutStock')
-
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
-let plantsOutStock = plants.filter(plant => plant.availability === 'out')
-
-const filterFunction = function() {
-    plants.forEach(plant => {
-                        `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+filterInStock.addEventListener('click', () => {
+    filteredArr = [];
+    if(filterInStock.checked && !filterOutStock.checked){
+        plantsInStock.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                                     <img class="img-fluid" src="${plant.image}" alt="">
                                     <h5>${plant.name}</h5>
                                     <p>${plant.price}$</p>
                                     <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                        </div>`})}
-plantsInStock.forEach(plant => {filterFunction();});
-plantsOutStock.forEach(plant => {filterFunction();});
-
-
-
-filteredArr = [];
-filterInStock.addEventListener('click', () => {
-        filterInStock.checked ? filteredArr.push(plantsInStock) :null
-        !filterInStock.checked ? filteredArr.pop(plantsInStock) :null
-        console.log(filteredArr)})
-filterOutStock.addEventListener('click', () => {
-        filterOutStock.checked ? filteredArr.unshift(plantsOutStock) :null
-        !filterOutStock.checked ? filteredArr.shift(plantsOutStock) :null
-        console.log(filteredArr)})
-
-/*
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
+                                </div>`;
+            filteredArr.push(productHtml)})
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
-        filteredArr.push(productHtml)*/
+    }
+    if(filterInStock.checked && filterOutStock.checked){
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
+    if(!filterInStock.checked){
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
+    if(!filterInStock.checked && filterOutStock.checked){
+        plantsOutStock.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                </div>`;
+            filteredArr.push(productHtml)})
+        filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
+    
+})
+
+const filterOutStock = document.querySelector('.filterOutStock')
+let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+filterOutStock.addEventListener('click', () => {
+    filteredArr = [];
+    if(filterOutStock.checked && !filterInStock.checked){
+        plantsOutStock.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                </div>`;
+            filteredArr.push(productHtml)})
+        filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
+    if(filterOutStock.checked && filterInStock.checked ){
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
+    if(!filterOutStock.checked){
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
+    if(!filterOutStock.checked && filterInStock.checked){
+        plantsInStock.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                </div>`;
+            filteredArr.push(productHtml)})
+        filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
+})
 
 
 
