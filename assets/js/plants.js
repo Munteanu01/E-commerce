@@ -13,11 +13,15 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
-const filters = document.querySelectorAll('.filters')
-filters.forEach(filter => {
-    filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
-    !filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+filtersCheckbox = document.querySelectorAll('input[type=checkbox]')
+filtersCheckbox.forEach(filterCheckbox => {
+    filterCheckbox.addEventListener('click', () => {
+        filterCheckbox.checked ? filterCheckbox.nextSibling.classList.add('filtersOnClick') :null
+        !filterCheckbox.checked ? filterCheckbox.nextSibling.classList.remove('filtersOnClick') :null
+    })
 })
+
+
 //PLANTS
 const plants = [
     {"name":"Juniperus Bonsai",
