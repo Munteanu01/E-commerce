@@ -76,6 +76,11 @@ const filterInStock = document.querySelector('.filterInStock')
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
 filterInStock.addEventListener('click', () => {
     filteredArr = [];
+    if(filterInStock.checked && filterOutStock.checked){
+        filterInStock.nextSibling.classList.add('filtersOnClick')
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
     if(filterInStock.checked && !filterOutStock.checked){
         filterInStock.nextSibling.classList.add('filtersOnClick')
         plantsInStock.forEach(plant => {
@@ -90,23 +95,25 @@ filterInStock.addEventListener('click', () => {
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
-    if(filterInStock.checked && filterOutStock.checked){
-        filterInStock.nextSibling.classList.add('filtersOnClick')
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
     if(!filterInStock.checked){
         filteredDiv.classList.add('d-none')
         productsDiv.classList.remove('d-none')
         filterInStock.nextSibling.classList.remove('filtersOnClick')
     }
-    
+    if(!filterInStock.checked && filterOutStock.checked){
+        console.log('instocknot checked and outstockchecked')
+    }
 })
 
 const filterOutStock = document.querySelector('.filterOutStock')
 let plantsOutStock = plants.filter(plant => plant.availability === 'out')
 filterOutStock.addEventListener('click', () => {
     filteredArr = [];
+    if(filterOutStock.checked && filterInStock.checked ){
+        filterOutStock.nextSibling.classList.add('filtersOnClick')
+        filteredDiv.classList.add('d-none')
+        productsDiv.classList.remove('d-none')
+    }
     if(filterOutStock.checked && !filterInStock.checked){
         filterOutStock.nextSibling.classList.add('filtersOnClick')
         plantsOutStock.forEach(plant => {
@@ -121,17 +128,14 @@ filterOutStock.addEventListener('click', () => {
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
-    if(filterOutStock.checked && filterInStock.checked ){
-        filterInStock.nextSibling.classList.add('filtersOnClick')
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
     if(!filterOutStock.checked){
         filterOutStock.nextSibling.classList.remove('filtersOnClick')
         filteredDiv.classList.add('d-none')
         productsDiv.classList.remove('d-none')
     }
-    
+    if(!filterOutStock.checked && filterInStock.checked){
+        console.log('outstocknotchecked and instockchecked')
+    }
 })
 
 
