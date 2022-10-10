@@ -1,26 +1,3 @@
-//FILTER ON CLICK
-const items = document.querySelectorAll('.item')
-document.querySelector('#filter').addEventListener('click', () => {
-    document.querySelector('.filterPlus').classList.toggle('d-none');
-    document.querySelector('.filterMinus').classList.toggle('d-none');
-    document.querySelector('.filterDiv').classList.toggle('d-none');
-})
-document.querySelector('.firstBtn').addEventListener('click', () => {
-    document.querySelector('.firstDiv').classList.toggle('d-none');
-})
-document.querySelector('.secondBtn').addEventListener('click', () => {
-    document.querySelector('.secondDiv').classList.toggle('d-none');
-})
-document.querySelector('.thirdBtn').addEventListener('click', () => {
-    document.querySelector('.thirdDiv').classList.toggle('d-none');
-})
-const filters = document.querySelectorAll('input[type="checkbox"')
-filters.forEach(filter => {
-    filter.addEventListener('click', () => {
-        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
-        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    })
-})
 //PLANTS
 const plants = [
     {"name":"Juniperus Bonsai",
@@ -72,14 +49,20 @@ const plants = [
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
 
-
-
 //FILTER
+let plantsInStock = plants.filter(plant => plant.availability === 'in')
+let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+let plantsBonsai = plants.filter(plant => plant.type === 'bonsai')
+let plantsTree = plants.filter(plant => plant.type === 'tree')
+
 let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
 
 const filterInStock = document.querySelector('.filterInStock')
-let plantsInStock = plants.filter(plant => plant.availability === 'in')
+const filterOutStock = document.querySelector('.filterOutStock')
+const filterBonsai = document.querySelector('.filterBonsai')
+const filterTree = document.querySelector('.filterTree')
+
 filterInStock.addEventListener('click', () => {
     filteredArr = [];
     if(filterInStock.checked && !filterOutStock.checked){
@@ -119,8 +102,7 @@ filterInStock.addEventListener('click', () => {
     
 })
 
-const filterOutStock = document.querySelector('.filterOutStock')
-let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+
 filterOutStock.addEventListener('click', () => {
     filteredArr = [];
     if(filterOutStock.checked && !filterInStock.checked){
@@ -170,9 +152,29 @@ filterOutStock.addEventListener('click', () => {
 
 
 
-
-
-
+//FILTER ON CLICK
+const items = document.querySelectorAll('.item')
+document.querySelector('#filter').addEventListener('click', () => {
+    document.querySelector('.filterPlus').classList.toggle('d-none');
+    document.querySelector('.filterMinus').classList.toggle('d-none');
+    document.querySelector('.filterDiv').classList.toggle('d-none');
+})
+document.querySelector('.firstBtn').addEventListener('click', () => {
+    document.querySelector('.firstDiv').classList.toggle('d-none');
+})
+document.querySelector('.secondBtn').addEventListener('click', () => {
+    document.querySelector('.secondDiv').classList.toggle('d-none');
+})
+document.querySelector('.thirdBtn').addEventListener('click', () => {
+    document.querySelector('.thirdDiv').classList.toggle('d-none');
+})
+const filters = document.querySelectorAll('input[type="checkbox"')
+filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
+    })
+})
 
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
