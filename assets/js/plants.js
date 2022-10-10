@@ -100,23 +100,14 @@ plantsOutStock.forEach(plant => {filterFunction();});
 
 filteredArr = [];
 filterInStock.addEventListener('click', () => {
-        if(filterInStock.checked){
-            filteredArr.push(plantsInStock)
-        }
-        if(!filterInStock.checked){
-            filteredArr.pop(plantsInStock)
-        }
-        console.log(filteredArr)
-    })
+        filterInStock.checked ? filteredArr.push(plantsInStock) :null
+        !filterInStock.checked ? filteredArr.pop(plantsInStock) :null
+        console.log(filteredArr)})
 filterOutStock.addEventListener('click', () => {
-        if(filterOutStock.checked){
-            filteredArr.push(plantsOutStock)
-        }
-        if(!filterOutStock.checked){
-            filteredArr.pop(plantsOutStock)
-        }
-        console.log(filteredArr)
-    })
+        filterOutStock.checked ? filteredArr.unshift(plantsOutStock) :null
+        !filterOutStock.checked ? filteredArr.shift(plantsOutStock) :null
+        console.log(filteredArr)})
+
 
 
 
