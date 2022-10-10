@@ -73,9 +73,50 @@ let filteredDiv = document.querySelector('.filtered')
 let productsDiv = document.querySelector('.productsDiv')
 
 const filterInStock = document.querySelector('.filterInStock')
+const filterOutStock = document.querySelector('.filterOutStock')
+
 let plantsInStock = plants.filter(plant => plant.availability === 'in')
+let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+
+const filterFunction = function() {
+    plants.forEach(plant => {
+                        `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                        </div>`})}
+plantsInStock.forEach(plant => {filterFunction();});
+plantsOutStock.forEach(plant => {filterFunction();});
+
+filteredArr = [];
 filterInStock.addEventListener('click', () => {
-    filteredArr = [];
+        if(filterInStock.checked){
+            filterInStock.nextSibling.classList.add('filtersOnClick')
+            filteredArr.push(plantsInStock)
+        }
+        if(!filterInStock.checked){
+            filterInStock.nextSibling.classList.remove('filtersOnClick')
+            filteredArr.pop(plantsInStock)
+        }
+        console.log(filteredArr)
+    })
+filterOutStock.addEventListener('click', () => {
+        if(filterOutStock.checked){
+            filterOutStock.nextSibling.classList.add('filtersOnClick')
+            filteredArr.push(plantsOutStock)
+        }
+        if(!filterOutStock.checked){
+            filterOutStock.nextSibling.classList.remove('filtersOnClick')
+            filteredArr.pop(plantsOutStock)
+        }
+        console.log(filteredArr)
+    })
+
+
+
+/*filterInStock.addEventListener('click', () => {
+   
     if(filterInStock.checked && filterOutStock.checked){
         filterInStock.nextSibling.classList.add('filtersOnClick')
         filteredDiv.classList.add('d-none')
@@ -83,14 +124,8 @@ filterInStock.addEventListener('click', () => {
     }
     if(filterInStock.checked && !filterOutStock.checked){
         filterInStock.nextSibling.classList.add('filtersOnClick')
-        plantsInStock.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
+        
+            
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
@@ -100,15 +135,11 @@ filterInStock.addEventListener('click', () => {
         productsDiv.classList.remove('d-none')
         filterInStock.nextSibling.classList.remove('filtersOnClick')
     }
-    if(!filterInStock.checked && filterOutStock.checked){
-        console.log('instocknot checked and outstockchecked')
-    }
+    
 })
 
-const filterOutStock = document.querySelector('.filterOutStock')
-let plantsOutStock = plants.filter(plant => plant.availability === 'out')
+
 filterOutStock.addEventListener('click', () => {
-    filteredArr = [];
     if(filterOutStock.checked && filterInStock.checked ){
         filterOutStock.nextSibling.classList.add('filtersOnClick')
         filteredDiv.classList.add('d-none')
@@ -133,10 +164,8 @@ filterOutStock.addEventListener('click', () => {
         filteredDiv.classList.add('d-none')
         productsDiv.classList.remove('d-none')
     }
-    if(!filterOutStock.checked && filterInStock.checked){
-        console.log('outstocknotchecked and instockchecked')
-    }
-})
+    
+})*/
 
 
 
