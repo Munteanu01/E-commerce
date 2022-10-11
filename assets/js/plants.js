@@ -1,256 +1,53 @@
-//PLANTS
-const plants = [
-    {"name":"Juniperus Bonsai",
-    "price":45,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/IMG_8775.jpeg"},
-    {"name":"Phyllanthus Mirabilis",
-    "price":20,
-    "availability":"in",
-    "type":"",
-    "collection":"hardy",
-    "image":"img/plants/IMG_9244.jpeg"},
-    {"name":"Juniperus Chinensis Shimpaku Kishu",
-    "price":60,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Kishu_Bonsai_02.jpeg"},
-    {"name":"Monstera Deliciosa",
-    "price":25,
-    "availability":"in",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Monstera_ow.jpeg"},
-    {"name":"Olive Tree",
-    "price":35,
-    "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Olive-Tree-L.jpeg"},
-    {"name":"Everfresh Tree",
-    "price":50,
-    "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Everfresh.jpeg"},
-    {"name":"Pachira Aquatica",
-    "price":15,
-    "availability":"out",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Pachira_Moon_p.jpeg"},
-    {"name":"Variegated Juniper Bonsai",
-    "price":40,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Wind-Swept_t.jpeg"},]
-
 //FILTER
-let plantsInStock = plants.filter(plant => plant.availability === 'in')
-let plantsOutStock = plants.filter(plant => plant.availability === 'out')
-let plantsBonsai = plants.filter(plant => plant.type === 'bonsai')
-let plantsTree = plants.filter(plant => plant.type === 'tree')
-let plantsBoth = plants.filter(plant => plant.type === 'bonsai' || plant.type === 'tree') 
-
-let filteredDiv = document.querySelector('.filteredDiv')
-let productsDiv = document.querySelector('.productsDiv')
+const items = document.querySelectorAll('.item')
+const filters = document.querySelectorAll('input[type="checkbox"')
 
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
 const filterBonsai = document.querySelector('.filterBonsai')
 const filterTree = document.querySelector('.filterTree')
+const filterBeginner= document.querySelector('.filterBeginner')
+const filterJapan = document.querySelector('.filterJapan')
+const filterHardy = document.querySelector('.filterHardy')
 
-filterInStock.addEventListener('click', () => {
-    filteredArr = [];
-    if(filterInStock.checked && !filterOutStock.checked){
-        plantsInStock.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(filterInStock.checked && filterOutStock.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterInStock.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterInStock.checked && filterOutStock.checked){
-        plantsOutStock.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
+
+items.forEach(item =>{
+    filterInStock.addEventListener('click', () => {
+        filterInStock.checked && !item.classList.contains('inStock') ? item.classList.add('stockdnone') :null
+        !filterInStock.checked && !item.classList.contains('inStock') ? item.classList.remove('stockdnone') :null
+        filterInStock.checked && filterOutStock.checked ? item.classList.remove('stockdnone') :null;                                
+        if(!filterInStock.checked && filterOutStock.checked){
+            !item.classList.contains('outStock') ? item.classList.add('stockdnone') :null}}) 
+    filterOutStock.addEventListener('click', () => {
+        filterOutStock.checked && !item.classList.contains('outStock') ? item.classList.add('stockdnone') :null
+        !filterOutStock.checked && !item.classList.contains('outStock') ? item.classList.remove('stockdnone') :null
+        filterOutStock.checked && filterInStock.checked ? item.classList.remove('stockdnone') :null
+        if(!filterOutStock.checked && filterInStock.checked){
+            !item.classList.contains('inStock') ? item.classList.add('stockdnone') : null}})
+    
+    filterBonsai.addEventListener('click', () => {
+        filterBonsai.checked && !item.classList.contains('bonsai') ? item.classList.add('typednone') :null
+        !filterBonsai.checked && !item.classList.contains('bonsai') ? item.classList.remove('typednone') :null
+        if(filterBonsai.checked && filterTree.checked){
+            item.classList.contains('bonsai') || item.classList.contains('tree') ? item.classList.remove('typednone') :null}                                   
+        if(!filterBonsai.checked && filterTree.checked){
+            !item.classList.contains('tree') ? item.classList.add('typednone') :null}
+        }) 
+    filterTree.addEventListener('click', () => {
+        filterTree.checked && !item.classList.contains('tree') ? item.classList.add('typednone') :null
+        !filterTree.checked && !item.classList.contains('tree') ? item.classList.remove('typednone') :null
+        if(filterTree.checked && filterBonsai.checked){
+            item.classList.contains('tree') || item.classList.contains('bonsai') ? item.classList.remove('typednone') :null}
+        if(!filterTree.checked && filterBonsai.checked){
+            !item.classList.contains('bonsai') ? item.classList.add('typednone') : null}})
+
     
 })
-
-filterOutStock.addEventListener('click', () => {
-    filteredArr = [];
-    if(filterOutStock.checked && !filterInStock.checked){
-        plantsOutStock.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(filterOutStock.checked && filterInStock.checked ){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterOutStock.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterOutStock.checked && filterInStock.checked){
-        plantsInStock.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-})
-
-
-
-
-
-filterBonsai.addEventListener('click', () => {
-    filteredArr = [];
-    if(filterBonsai.checked){
-        plantsBonsai.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(!filterBonsai.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterBonsai.checked && filterTree.checked){
-        plantsTree.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(filterBonsai.checked && filterTree.checked){
-        plantsBoth.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-            filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-})
-
-filterTree.addEventListener('click', () => {
-    filteredArr = [];
-    if(filterTree.checked){
-        plantsTree.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(!filterTree.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
-    }
-    if(!filterTree.checked && filterBonsai.checked){
-        plantsBonsai.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-        filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-    if(filterTree.checked && filterBonsai.checked ){
-        plantsBoth.forEach(plant => {
-            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`;
-            filteredArr.push(productHtml)})
-            filteredDiv.innerHTML = filteredArr.join('');
-        filteredDiv.classList.remove('d-none')
-        productsDiv.classList.add('d-none')
-    }
-})
-
-
-
-
-
-
-
-
+    
 
 
 
 //FILTER ON CLICK
-const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
     document.querySelector('.filterMinus').classList.toggle('d-none');
@@ -265,14 +62,11 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
-const filters = document.querySelectorAll('input[type="checkbox"')
 filters.forEach(filter => {
     filter.addEventListener('click', () => {
-        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
-        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    })
+    filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+    !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null})
 })
-
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
     const value = e.target.value.toLowerCase();

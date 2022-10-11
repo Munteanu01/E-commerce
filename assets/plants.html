@@ -40,19 +40,19 @@
         <div class="row justify-content-center">
         <div class="col-md-6 col-xl-4 col-xxl-3"><button class="filterBtns text-start firstBtn">Availability</button>
             <div class="firstDiv d-none">
-                <input type="checkbox" class=" filterInStock" id="inStock"><label for="inStock" class="filters mt-2">In stock</label><br>
-                <input type="checkbox" class=" filterOutStock" id="outStock"><label for="outStock" class="filters ">Out of stock</label>
+                <input type="checkbox" class="d-none filterInStock" id="inStock"><label for="inStock" class="filters mt-2">In stock</label><br>
+                <input type="checkbox" class="d-none filterOutStock" id="outStock"><label for="outStock" class="filters ">Out of stock</label>
             </div></div>
         <div class="col-md-6 col-xl-4 col-xxl-3"><button class="filterBtns text-start secondBtn">Type</button>
             <div class="secondDiv d-none">
-                <input type="checkbox" class=" filterBonsai " id="bonsai"><label for="bonsai" class="filters mt-2">Bonsai</label><br>
-                <input type="checkbox" class=" filterTree" id="tree"><label for="tree" class="filters ">Evergreen trees</label>
+                <input type="checkbox" class="d-none filterBonsai" id="bonsai"><label for="bonsai" class="filters mt-2">Bonsai</label><br>
+                <input type="checkbox" class="d-none filterTree" id="tree"><label for="tree" class="filters ">Evergreen trees</label>
             </div></div>
         <div class="col-md-6 col-xl-4 col-xxl-3"><button class="filterBtns text-start thirdBtn">Collection</button>
             <div class="thirdDiv d-none">
-                <input type="checkbox" class=" filterBeginner" id="beginner"><label for="beginner" class="filters  mt-2">Beginner friendly</label><br>
-                <input type="checkbox" class=" filterJapan" id="japan"><label for="japan" class="filters filterJapan">Grown in Japan</label><br>
-                <input type="checkbox" class=" filterHardy" id="hardy"><label for="hardy" class="filters">Low maintenance & hardy</label><br>
+                <input type="checkbox" class="d-none filterBeginner" id="beginner"><label for="beginner" class="filters  mt-2">Beginner friendly</label><br>
+                <input type="checkbox" class="d-none filterJapan" id="japan"><label for="japan" class="filters">Grown in Japan</label><br>
+                <input type="checkbox" class="d-none filterHardy" id="hardy"><label for="hardy" class="filters">Low maintenance & hardy</label><br>
             </div></div>
         <div class=" col-md-6 col-xl-4 col-xxl-3"><input class="search" type="search" placeholder="Search"></div>
         </div>
@@ -60,57 +60,54 @@
 </div>
 <div class="productsDiv row g-5 p-sm-5 p-3 mx-2 justify-content-center">
 
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock bonsai japan">
         <img class="img-fluid" src="img/plants/IMG_8775.jpeg" alt="">
         <h5>Juniperus Bonsai</h5>
         <p>45$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock hardy">
         <img class="img-fluid" src="img/plants/IMG_9244.jpeg" alt="">
         <h5>Phyllanthus Mirabilis</h5>
         <p>20$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock bonsai japan">
         <img class="img-fluid" src="img/plants/Kishu_Bonsai_02.jpeg" alt="">
         <h5>Juniperus Chinensis Shimpaku Kishu</h5>
         <p>60$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock beginner">
         <img class="img-fluid" src="img/plants/Monstera_ow.jpeg" alt="">
         <h5>Monstera Deliciosa </h5>
         <p>25$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock tree japan">
         <img class="img-fluid" src="img/plants/Olive-Tree-L.jpeg" alt="">
         <h5>Olive Tree</h5>
         <p>35$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock tree japan">
         <img class="img-fluid" src="img/plants/Everfresh.jpeg" alt="">
         <h5>Everfresh Tree</h5>
         <p>50$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item outStock beginner">
         <img class="img-fluid" src="img/plants/Pachira_Moon_p.jpeg" alt="">
         <h5>Pachira Aquatica</h5>
         <p>15$</p>
         <p class="sold">SOLD OUT</p>
     </div>
-    <div class="col-lg-4 col-sm-6 mt-0  text-center item">
+    <div class="col-lg-4 col-sm-6 mt-0  text-center item inStock bonsai japan">
         <img class="img-fluid" src="img/plants/Wind-Swept_t.jpeg" alt="">
         <h5>Variegated Juniper Bonsai</h5>
         <p>40$</p>
         <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
     </div>
-</div>
-<div class="filteredDiv row g-5 p-sm-5 p-3 mx-2 justify-content-center d-none">
-    
 </div>
 
 <footer>
