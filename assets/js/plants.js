@@ -44,59 +44,46 @@ items.forEach(item =>{
     filterBeginner.addEventListener('click', () => {
         filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.add('d-none') :null
         !filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.remove('d-none') :null
+        filterHardy.checked && !filterBeginner.checked && !item.classList.contains('hardy') ? item.classList.add('d-none') :null
+        filterJapan.checked && !filterBeginner.checked && !item.classList.contains('japan') ? item.classList.add('d-none') :null
         if(filterJapan.checked && filterBeginner.checked){
             item.classList.add('d-none')
             item.classList.contains('beginner') || item.classList.contains('japan') ? item.classList.remove('d-none') :null
-        }
-        if(filterJapan.checked && !filterBeginner.checked){
-            !item.classList.contains('japan') ? item.classList.add('d-none') :null
         }
         if(filterHardy.checked && filterBeginner.checked){
             item.classList.add('d-none')
             item.classList.contains('hardy') || item.classList.contains('beginner') ? item.classList.remove('d-none') :null
         }
-        if(filterHardy.checked && !filterBeginner.checked){
-            !item.classList.contains('hardy') ? item.classList.add('d-none') :null
-        }
     })
     filterJapan.addEventListener('click', () => {
         filterJapan.checked && !item.classList.contains('japan') ? item.classList.add('d-none') :null
         !filterJapan.checked && !item.classList.contains('japan') ? item.classList.remove('d-none') :null
+        filterHardy.checked && !filterJapan.checked && !item.classList.contains('hardy') ? item.classList.add('d-none') :null
+        filterBeginner.checked && !filterJapan.checked && !item.classList.contains('beginner') ? item.classList.add('d-none') :null
         if(filterBeginner.checked && filterJapan.checked){
             item.classList.add('d-none')
             item.classList.contains('japan') || item.classList.contains('beginner') ? item.classList.remove('d-none') :null
-        }
-        if(filterBeginner.checked && !filterJapan.checked){
-            !item.classList.contains('beginner') ? item.classList.add('d-none') :null
         }
         if(filterHardy.checked && filterJapan.checked){
             item.classList.add('d-none')
             item.classList.contains('hardy') || item.classList.contains('japan') ? item.classList.remove('d-none') :null
         }
-        if(filterHardy.checked && !filterJapan.checked){
-            !item.classList.contains('hardy') ? item.classList.add('d-none') :null
-        }
     })
     filterHardy.addEventListener('click', () => {
         filterHardy.checked && !item.classList.contains('hardy') ? item.classList.add('d-none') :null
         !filterHardy.checked && !item.classList.contains('hardy') ? item.classList.remove('d-none') :null
+        filterJapan.checked && !filterHardy.checked && !item.classList.contains('japan') ? item.classList.add('d-none') :null
+        filterBeginner.checked && !filterHardy.checked && !item.classList.contains('beginner') ? item.classList.add('d-none') :null
         if(filterJapan.checked && filterHardy.checked){
             item.classList.add('d-none')
             item.classList.contains('hardy') || item.classList.contains('japan') ? item.classList.remove('d-none') :null
-        }
-        if(filterJapan.checked && !filterHardy.checked){
-            !item.classList.contains('japan') ? item.classList.add('d-none') :null
         }
         if(filterBeginner.checked && filterHardy.checked){
             item.classList.add('d-none')
             item.classList.contains('hardy') || item.classList.contains('beginner') ? item.classList.remove('d-none') :null
         }
-        if(filterBeginner.checked && !filterHardy.checked){
-            !item.classList.contains('beginner') ? item.classList.add('d-none') :null
-        }
     })
 })
-    
 
 
 
