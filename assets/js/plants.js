@@ -54,6 +54,7 @@ let plantsInStock = plants.filter(plant => plant.availability === 'in')
 let plantsOutStock = plants.filter(plant => plant.availability === 'out')
 let plantsBonsai = plants.filter(plant => plant.type === 'bonsai')
 let plantsTree = plants.filter(plant => plant.type === 'tree')
+let plantsBoth = plants.filter(plant => plant.type === 'bonsai' || plant.type === 'tree') 
 
 let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
@@ -146,7 +147,7 @@ filterOutStock.addEventListener('click', () => {
 
 filterBonsai.addEventListener('click', () => {
     filteredArr = [];
-    if(filterBonsai.checked && !filterTree.checked){
+    if(filterBonsai.checked){
         plantsBonsai.forEach(plant => {
             let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                                     <img class="img-fluid" src="${plant.image}" alt="">
@@ -158,10 +159,6 @@ filterBonsai.addEventListener('click', () => {
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
-    }
-    if(filterBonsai.checked && filterTree.checked){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
     }
     if(!filterBonsai.checked){
         filteredDiv.classList.add('d-none')
@@ -180,12 +177,24 @@ filterBonsai.addEventListener('click', () => {
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
-    
+    if(filterBonsai.checked && filterTree.checked){
+        plantsBoth.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                </div>`;
+            filteredArr.push(productHtml)})
+            filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
 })
 
 filterTree.addEventListener('click', () => {
     filteredArr = [];
-    if(filterTree.checked && !filterBonsai.checked){
+    if(filterTree.checked){
         plantsTree.forEach(plant => {
             let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                                     <img class="img-fluid" src="${plant.image}" alt="">
@@ -197,10 +206,6 @@ filterTree.addEventListener('click', () => {
         filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
-    }
-    if(filterTree.checked && filterBonsai.checked ){
-        filteredDiv.classList.add('d-none')
-        productsDiv.classList.remove('d-none')
     }
     if(!filterTree.checked){
         filteredDiv.classList.add('d-none')
@@ -216,6 +221,19 @@ filterTree.addEventListener('click', () => {
                                 </div>`;
             filteredArr.push(productHtml)})
         filteredDiv.innerHTML = filteredArr.join('');
+        filteredDiv.classList.remove('d-none')
+        productsDiv.classList.add('d-none')
+    }
+    if(filterTree.checked && filterBonsai.checked ){
+        plantsBoth.forEach(plant => {
+            let productHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                    <img class="img-fluid" src="${plant.image}" alt="">
+                                    <h5>${plant.name}</h5>
+                                    <p>${plant.price}$</p>
+                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                </div>`;
+            filteredArr.push(productHtml)})
+            filteredDiv.innerHTML = filteredArr.join('');
         filteredDiv.classList.remove('d-none')
         productsDiv.classList.add('d-none')
     }
