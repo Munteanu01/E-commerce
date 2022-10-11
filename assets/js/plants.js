@@ -1,7 +1,6 @@
 //FILTER
 const items = document.querySelectorAll('.item')
 const filters = document.querySelectorAll('input[type="checkbox"')
-
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
 const filterBonsai = document.querySelector('.filterBonsai')
@@ -9,7 +8,6 @@ const filterTree = document.querySelector('.filterTree')
 const filterBeginner= document.querySelector('.filterBeginner')
 const filterJapan = document.querySelector('.filterJapan')
 const filterHardy = document.querySelector('.filterHardy')
-
 
 items.forEach(item =>{
     filterInStock.addEventListener('click', () => {
@@ -25,6 +23,7 @@ items.forEach(item =>{
         if(!filterOutStock.checked && filterInStock.checked){
             !item.classList.contains('inStock') ? item.classList.add('stockdnone') : null}})
     
+
     filterBonsai.addEventListener('click', () => {
         filterBonsai.checked && !item.classList.contains('bonsai') ? item.classList.add('typednone') :null
         !filterBonsai.checked && !item.classList.contains('bonsai') ? item.classList.remove('typednone') :null
@@ -41,7 +40,32 @@ items.forEach(item =>{
         if(!filterTree.checked && filterBonsai.checked){
             !item.classList.contains('bonsai') ? item.classList.add('typednone') : null}})
 
-    
+
+    filterBeginner.addEventListener('click', () => {
+        filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.add('d-none') :null
+        !filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.remove('d-none') :null
+        if(filterBeginner.checked && filterJapan.checked){
+            item.classList.add('d-none')
+            item.classList.contains('beginner') || item.classList.contains('japan') ? item.classList.remove('d-none') :null
+        }
+        if(!filterBeginner.checked && filterJapan.checked){
+            !item.classList.contains('japan') ? item.classList.add('d-none') :null
+        }
+    })
+    filterJapan.addEventListener('click', () => {
+        filterJapan.checked && !item.classList.contains('japan') ? item.classList.add('d-none') :null
+        !filterJapan.checked && !item.classList.contains('japan') ? item.classList.remove('d-none') :null
+        if(filterJapan.checked && filterBeginner.checked){
+            item.classList.add('d-none')
+            item.classList.contains('japan') || item.classList.contains('beginner') ? item.classList.remove('d-none') :null
+        }
+        if(!filterJapan.checked && filterBeginner.checked){
+            !item.classList.contains('beginner') ? item.classList.add('d-none') :null
+        }
+    })
+    filterHardy.addEventListener('click', () => {
+        
+    })
 })
     
 
