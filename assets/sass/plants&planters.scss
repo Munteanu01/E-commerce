@@ -8,15 +8,13 @@ body{
     font-family: $font;
     overflow-x:hidden;
 }
-.showcase{
-    p{
-    font-weight: lighter ;
-    margin:0;
-    }
-}
 .item{
     max-width: 440px;
     background-size: cover;
+    p{
+        font-weight: lighter ;
+        margin:5px;
+    }
 }
 .plus, .minus{
     font-size: 1.3rem;
@@ -71,10 +69,6 @@ body{
 
 .filtersOnClick{
     color: $primaryColor;
-}
-
-.instockdnone, .outstockdnone, .charcoaldnone, .creamdnone, .mdnone, .ldnone{
-    display: none;
 }
 
 input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration { display: none; }
