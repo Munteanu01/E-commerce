@@ -8,7 +8,6 @@ const filterTree = document.querySelector('.filterTree')
 const filterBeginner= document.querySelector('.filterBeginner')
 const filterJapan = document.querySelector('.filterJapan')
 const filterHardy = document.querySelector('.filterHardy')
-
 items.forEach(item =>{
     filterInStock.addEventListener('click', () => {
         filterInStock.checked && !item.classList.contains('inStock') ? item.classList.add('stockdnone') :null
@@ -36,8 +35,6 @@ items.forEach(item =>{
             item.classList.contains('tree') || item.classList.contains('bonsai') ? item.classList.remove('typednone') :null}
         if(!filterTree.checked && filterBonsai.checked){
             !item.classList.contains('bonsai') ? item.classList.add('typednone') : null}})
-
-
     filterBeginner.addEventListener('click', () => {
         filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.add('d-none') :null
         !filterBeginner.checked && !item.classList.contains('beginner') ? item.classList.remove('d-none') :null
@@ -54,7 +51,6 @@ items.forEach(item =>{
         }
         if(!filterBeginner.checked && filterJapan.checked && filterHardy.checked){
             item.classList.contains('hardy') || item.classList.contains('japan') ? item.classList.remove('d-none') :null}
-
     })
     filterJapan.addEventListener('click', () => {
         filterJapan.checked && !item.classList.contains('japan') ? item.classList.add('d-none') :null
@@ -72,7 +68,6 @@ items.forEach(item =>{
         }
         if(filterBeginner.checked && !filterJapan.checked && filterHardy.checked){
             item.classList.contains('beginner') || item.classList.contains('hardy') ? item.classList.remove('d-none') :null}
-
     })
     filterHardy.addEventListener('click', () => {
         filterHardy.checked && !item.classList.contains('hardy') ? item.classList.add('d-none') :null
@@ -92,8 +87,6 @@ items.forEach(item =>{
             item.classList.contains('beginner') || item.classList.contains('japan') ? item.classList.remove('d-none') :null}
     })
 })
-
-
 
 //FILTER ON CLICK
 document.querySelector('#filter').addEventListener('click', () => {
@@ -115,6 +108,7 @@ filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null})
 })
+
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
