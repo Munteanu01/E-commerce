@@ -62,44 +62,36 @@ const filterOff = () => {
     filteredDiv.classList.add('d-none')
     productsDiv.classList.remove('d-none')
 }
-let plantsInStock = plants.filter(plant => plant.availability === 'in')
-let plantsOutStock = plants.filter(plant => plant.availability === 'out')
-inStockArr = []
-outStockArr = []
-sotckArr = [inStockArr, outStockArr]
-plantsInStock.forEach(plant => {
-    inStockArr.push(`<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                </div>`)
-    
-})
-plantsOutStock.forEach(plant => {
-    outStockArr.push(`<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                    <img class="img-fluid" src="${plant.image}" alt="">
-                                    <h5>${plant.name}</h5>
-                                    <p>${plant.price}$</p>
-                                    <p class="sold">SOLD OUT</p>
-                                </div>`)
-    
-})
 
+const filters = document.querySelectorAll('input[type="checkbox"')
+filters.forEach(filter => {
+filter.addEventListener('click', () => {
+        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
+        filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked ? filterOn() :filterOff();
+        
 
-
-
-
-filterInStock.addEventListener('click', () => {
-    if(filterInStock.checked){filteredDiv.innerHTML = inStockArr.join('');filterOn()}
-    !filterInStock.checked ? filterOff() :null
-})
-filterOutStock.addEventListener('click', () => {
-    if(filterOutStock.checked){filteredDiv.innerHTML = outStockArr.join('');filterOn()}
-    !filterOutStock.checked ? filterOff() :null
-})
-
-
+        plants.forEach(plant => {
+            plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${plant.image}" alt="">
+                                                <h5>${plant.name}</h5>
+                                                <p>${plant.price}$</p>
+                                                <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                            </div>` 
+                                        : plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${plant.image}" alt="">
+                                                <h5>${plant.name}</h5>
+                                                <p>${plant.price}$</p>
+                                                <p class="sold">SOLD OUT</p>
+                                            </div>`;
+        filterInStock.checked && plant.availability === 'in' ? console.log(plant):null
+        filterOutStock.checked && plant.availability === 'out' ? console.log(plant) :null
+            
+        
+        
+        })
+        })
+    })
 
 
 
@@ -127,13 +119,7 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
-const filters = document.querySelectorAll('input[type="checkbox"')
-filters.forEach(filter => {
-    filter.addEventListener('click', () => {
-        filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
-        !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    })
-})
+
 
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
