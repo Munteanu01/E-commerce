@@ -50,3 +50,4 @@ document.querySelector('.search').addEventListener("input", e => {
     })
 })
 
+//CART
