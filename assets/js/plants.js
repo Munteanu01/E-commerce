@@ -48,6 +48,42 @@ const plants = [
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
+plantsInStock = [];
+plantsOutStock = [];
+plantsStock = [];
+plantsBonsai = [];
+plantsTree = [];
+plantsType = [];
+plantsBonsaiInStock =[];
+plantsBonsaiOutStock =[];
+plantsTreeOutStock =[];
+plantsTreeInStock =[];
+plants.forEach(plant => {
+    
+    plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                            <img class="img-fluid" src="${plant.image}" alt="">
+                                            <h5>${plant.name}</h5>
+                                            <p>${plant.price}$</p>
+                                            <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                        </div>` 
+                                    : plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                            <img class="img-fluid" src="${plant.image}" alt="">
+                                            <h5>${plant.name}</h5>
+                                            <p>${plant.price}$</p>
+                                            <p class="sold">SOLD OUT</p>
+                                        </div>`;
+    plant.availability === 'in' ? plantsInStock.push(plantHtml) :null
+    plant.availability === 'out' ?  plantsOutStock.push(plantHtml) :null
+    plant.availability === 'out' || plant.availability === 'in' ?  plantsStock.push(plantHtml) :null
+    plant.type === 'bonsai' ? plantsBonsai.push(plantHtml) :null
+    plant.type === 'bonsai' && plant.availability === 'in' ? plantsBonsaiInStock.push(plantHtml) :null
+    plant.type === 'bonsai' && plant.availability === 'out' ? plantsBonsaiOutStock.push(plantHtml) :null
+    plant.type === 'tree' && plant.availability === 'out' ? plantsTreeOutStock.push(plantHtml) :null
+    plant.type === 'tree' && plant.availability === 'in' ? plantsTreeInStock.push(plantHtml) :null
+    plant.type === 'tree' ? plantsTree.push(plantHtml) :null
+    plant.type === 'tree' || plant.type === 'bonsai' ? plantsType.push(plantHtml) :null
+})
+
 let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
 const filterInStock = document.querySelector('.filterInStock')
@@ -70,26 +106,18 @@ filter.addEventListener('click', () => {
         !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
         filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked ? filterOn() :filterOff();
         
+        filterInStock.checked ? filteredDiv.innerHTML = plantsInStock.join('') :null
+        filterOutStock.checked ? filteredDiv.innerHTML = plantsOutStock.join('') :null
+        filterOutStock.checked && filterInStock.checked ? filteredDiv.innerHTML = plantsStock.join('') :null
 
-        plants.forEach(plant => {
-            plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${plant.image}" alt="">
-                                                <h5>${plant.name}</h5>
-                                                <p>${plant.price}$</p>
-                                                <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                            </div>` 
-                                        : plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${plant.image}" alt="">
-                                                <h5>${plant.name}</h5>
-                                                <p>${plant.price}$</p>
-                                                <p class="sold">SOLD OUT</p>
-                                            </div>`;
-        filterInStock.checked && plant.availability === 'in' ? console.log(plant):null
-        filterOutStock.checked && plant.availability === 'out' ? console.log(plant) :null
-            
-        
-        
-        })
+        filterInStock.checked && filterBonsai.checked ? filteredDiv.innerHTML = plantsBonsaiInStock.join('') :null
+        filterOutStock.checked && filterBonsai.checked ? filteredDiv.innerHTML = plantsBonsaiOutStock.join('') :null
+        filterInStock.checked && filterTree.checked ? filteredDiv.innerHTML = plantsTreeInStock.join('') :null
+        filterOutStock.checked && filterTree.checked ? filteredDiv.innerHTML = plantsTreeOutStock.join('') :null
+
+        filterBonsai.checked && !filterOutStock.checked ? filteredDiv.innerHTML = plantsBonsai.join('') :null
+        filterTree.checked && !filterOutStock.checked ? filteredDiv.innerHTML = plantsTree.join('') :null
+        filterTree.checked && filterBonsai.checked ? filteredDiv.innerHTML = plantsType.join('') :null
         })
     })
 
