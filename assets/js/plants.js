@@ -54,6 +54,9 @@ const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
 const filterBonsai = document.querySelector('.filterBonsai')
 const filterTree = document.querySelector('.filterTree')
+const filterBeginner = document.querySelector('.filterBeginner')
+const filterJapan = document.querySelector('.filterJapan')
+const filterHardy = document.querySelector('.filterHardy')
 const filterOn = () => {
     filteredDiv.classList.remove('d-none')
     productsDiv.classList.add('d-none')
@@ -67,13 +70,19 @@ filters.forEach(filter => {
 filter.addEventListener('click', () => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked ? filterOn() :filterOff();
+    filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
+    
     filteredArr = [];
     for(let plant of plants){
         if(filterInStock.checked &&  plant.availability !== 'in'){continue;}
         if(filterOutStock.checked && plant.availability !== 'out' ){continue;}
+
         if(filterBonsai.checked && plant.type !== 'bonsai'){continue;}
         if(filterTree.checked && plant.type !== 'tree'){continue;}
+        
+        if(filterBeginner.checked && plant.collection !== 'beginner'){continue;}
+        if(filterJapan.checked && plant.collection !== 'japan'){continue;}
+        if(filterHardy.checked && plant.collection !== 'hardy'){continue;}
         plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${plant.image}" alt="">
                                                 <h5>${plant.name}</h5>
