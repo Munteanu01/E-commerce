@@ -50,6 +50,7 @@ const plants = [
     "image":"img/plants/Wind-Swept_t.jpeg"},]
 let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
+const filters = document.querySelectorAll('input[type="checkbox"')
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
 const filterBonsai = document.querySelector('.filterBonsai')
@@ -65,7 +66,6 @@ const filterOff = () => {
     filteredDiv.classList.add('d-none')
     productsDiv.classList.remove('d-none')
 }
-const filters = document.querySelectorAll('input[type="checkbox"')
 filters.forEach(filter => {
 filter.addEventListener('click', () => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
@@ -74,15 +74,29 @@ filter.addEventListener('click', () => {
     
     filteredArr = [];
     for(let plant of plants){
-        if(filterInStock.checked &&  plant.availability !== 'in'){continue;}
-        if(filterOutStock.checked && plant.availability !== 'out' ){continue;}
+        if(filterInStock.checked && filterOutStock.checked){
+            plant.availability ==='in' || plant.availability === 'out' ?  null :null
+        }
+        else if(filterInStock.checked &&  plant.availability !== 'in'){continue;}
+        else if(filterOutStock.checked && plant.availability !== 'out' ){continue;}
 
-        if(filterBonsai.checked && plant.type !== 'bonsai'){continue;}
-        if(filterTree.checked && plant.type !== 'tree'){continue;}
-        
-        if(filterBeginner.checked && plant.collection !== 'beginner'){continue;}
-        if(filterJapan.checked && plant.collection !== 'japan'){continue;}
-        if(filterHardy.checked && plant.collection !== 'hardy'){continue;}
+        if(filterBonsai.checked && filterTree.checked){
+            if(plant.type === 'bonsai' || plant.type === 'tree'){}else{continue;}
+        }
+        else if(filterBonsai.checked && plant.type !== 'bonsai'){continue;}
+        else if(filterTree.checked && plant.type !== 'tree'){continue;}
+
+        if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && plant.collection !== 'beginner'){continue;}
+        if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && plant.collection !== 'japan'){continue;}
+        if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && plant.collection !== 'hardy'){continue;}
+
+        if(filterBeginner.checked && filterJapan.checked && !filterHardy.checked){
+            if(plant.collection === 'beginner' || plant.collection === 'japan'){}else{continue;}}
+        if(filterJapan.checked && filterHardy.checked && !filterBeginner.checked){
+            if(plant.collection === 'japan' || plant.collection === 'hardy'){}else{continue;}}
+        if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
+            if(plant.collection === 'hardy' || plant.collection === 'beginner'){}else{continue;}}
+
         plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${plant.image}" alt="">
                                                 <h5>${plant.name}</h5>
