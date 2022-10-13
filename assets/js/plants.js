@@ -115,16 +115,6 @@ filter.addEventListener('click', () => {
 })
 })
 
-
-
-
-
-
-
-
-
-
-
 //FILTER ON CLICK
 const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
@@ -142,7 +132,6 @@ document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
 
-
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
@@ -150,4 +139,69 @@ document.querySelector('.search').addEventListener("input", e => {
         const isVisible = item.children[1].textContent.toLowerCase().includes(value)
         item.classList.toggle('d-none', !isVisible)
     })
+})
+
+//ADD & REMOVE BASKET
+items.forEach(item => {
+    if (!item.children[5]) return
+    let products = localStorage.getItem('products')
+    let product = products ? JSON.parse(products).find(e => e.product === item.children[1].innerText) : null
+    let count = product ? product.count : 0
+
+    const showOptions = () => {
+        item.children[5].classList.remove('d-none')
+        item.children[4].classList.remove('d-none')
+        item.children[4].innerText = count}
+    if (count > 0) showOptions()
+
+    const getProductHtml = productCount => {
+        return `<div>
+        <img class="cart-item-image" src="${item.querySelector('img').src}" width="300" >
+        <span>${item.querySelector('h5').textContent}</span>
+        <span>${item.querySelector('p').textContent}</span>
+        <span>${productCount}</span>
+        </div>`
+    }
+
+
+
+    const addToBasket = (item, basket) => {
+        const storagedProducts = basket ? JSON.stringify([...basket, item]) : JSON.stringify([item])
+        localStorage.setItem('products', storagedProducts)
+    }
+
+    item.children[3].addEventListener('click', () => {
+        let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')):[];
+        count++;
+        if (count > 0) showOptions()
+        let productHtml = getProductHtml(count)
+
+        const basketItem = { product: item.children[1].innerText, count, html: productHtml }
+        products = products && products.length ? products.filter(e => e.product !== basketItem.product) : []
+
+        addToBasket(basketItem, products)
+
+    })
+
+    item.children[5].addEventListener('click', () => {
+        let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')):[];
+        count--
+        item.children[4].innerText = count;
+
+        let productHtml = getProductHtml(count)
+
+        if (count < 1) {
+            item.children[5].classList.add('d-none')
+            item.children[4].classList.add('d-none')
+        }
+
+        const basketItem = { product: item.children[1].innerText, count, html: productHtml }
+        products = products && products.length ? products.filter(e => e.product !== basketItem.product) : []
+        if (basketItem.count > 0) {
+            addToBasket(basketItem, products)
+        } else {
+            localStorage.setItem('products', JSON.stringify(products))
+        }
+    })
+
 })
