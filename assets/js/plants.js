@@ -140,3 +140,5 @@ document.querySelector('.search').addEventListener("input", e => {
         item.classList.toggle('d-none', !isVisible)
     })
 })
+
+//CART
