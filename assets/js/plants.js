@@ -1,53 +1,53 @@
 //FILTER
 const plants = [
-    {"name":"Juniperus Bonsai",
-    "price":45,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/IMG_8775.jpeg"},
-    {"name":"Phyllanthus Mirabilis",
-    "price":20,
-    "availability":"in",
-    "type":"",
-    "collection":"hardy",
-    "image":"img/plants/IMG_9244.jpeg"},
-    {"name":"Juniperus Chinensis Shimpaku Kishu",
-    "price":60,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Kishu_Bonsai_02.jpeg"},
-    {"name":"Monstera Deliciosa",
-    "price":25,
-    "availability":"in",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Monstera_ow.jpeg"},
-    {"name":"Olive Tree",
-    "price":35,
-    "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Olive-Tree-L.jpeg"},
-    {"name":"Everfresh Tree",
-    "price":50,
-    "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Everfresh.jpeg"},
-    {"name":"Pachira Aquatica",
-    "price":15,
-    "availability":"out",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Pachira_Moon_p.jpeg"},
-    {"name":"Variegated Juniper Bonsai",
-    "price":40,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Wind-Swept_t.jpeg"},]
+    {name:"Juniperus Bonsai",
+    price:45,
+    availability:"in",
+    type:"bonsai",
+    collection:"japan",
+    image:"img/plants/IMG_8775.jpeg"},
+    {name:"Phyllanthus Mirabilis",
+    price:20,
+    availability:"in",
+    type:"",
+    collecion:"hardy",
+    image:"img/plants/IMG_9244.jpeg"},
+    {name:"Juniperus Chinensis Shimpaku Kishu",
+    price:60,
+    availability:"in",
+    type:"bonsai",
+    collection:"japan",
+    image:"img/plants/Kishu_Bonsai_02.jpeg"},
+    {name:"Monstera Deliciosa",
+    price:25,
+    availability:"in",
+    type:"",
+    collecion:"beginner",
+    image:"img/plants/Monstera_ow.jpeg"},
+    {name:"Olive Tree",
+    price:35,
+    availability:"in",
+    type:"tree",
+    collection:"japan",
+    image:"img/plants/Olive-Tree-L.jpeg"},
+    {name:"Everfresh Tree",
+    price:50,
+    availability:"in",
+    type:"tree",
+    collection:"japan",
+    image:"img/plants/Everfresh.jpeg"},
+    {name:"Pachira Aquatica",
+    price:15,
+    availability:"out",
+    type:"",
+    collecion:"beginner",
+    image:"img/plants/Pachira_Moon_p.jpeg"},
+    {name:"Variegated Juniper Bonsai",
+    price:40,
+    availability:"in",
+    type:"bonsai",
+    collection:"japan",
+    image:"img/plants/Wind-Swept_t.jpeg"},]
 let filteredDiv = document.querySelector('.filteredDiv')
 let productsDiv = document.querySelector('.productsDiv')
 const filters = document.querySelectorAll('input[type="checkbox"')
@@ -142,66 +142,3 @@ document.querySelector('.search').addEventListener("input", e => {
 })
 
 //BASKET
-items.forEach(item => {
-    if (!item.children[5]) return
-    let products = localStorage.getItem('products')
-    let product = products ? JSON.parse(products).find(e => e.product === item.children[1].innerText) : null
-    let count = product ? product.count : 0
-
-    const showOptions = () => {
-        item.children[5].classList.remove('d-none')
-        item.children[4].classList.remove('d-none')
-        item.children[4].innerText = count}
-    if (count > 0) showOptions()
-
-    const getProductHtml = productCount => {
-        return `<div>
-        <img class="cart-item-image" src="${item.querySelector('img').src}" width="300" >
-        <span>${item.querySelector('h5').textContent}</span>
-        <span>${item.querySelector('p').textContent}</span>
-        <span>${productCount}</span>
-        </div>`
-    }
-
-
-
-    const addToBasket = (item, basket) => {
-        const storagedProducts = basket ? JSON.stringify([...basket, item]) : JSON.stringify([item])
-        localStorage.setItem('products', storagedProducts)
-    }
-
-    item.children[3].addEventListener('click', () => {
-        let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')):[];
-        count++;
-        if (count > 0) showOptions()
-        let productHtml = getProductHtml(count)
-
-        const basketItem = { product: item.children[1].innerText, count, html: productHtml }
-        products = products && products.length ? products.filter(e => e.product !== basketItem.product) : []
-
-        addToBasket(basketItem, products)
-
-    })
-
-    item.children[5].addEventListener('click', () => {
-        let products = localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')):[];
-        count--
-        item.children[4].innerText = count;
-
-        let productHtml = getProductHtml(count)
-
-        if (count < 1) {
-            item.children[5].classList.add('d-none')
-            item.children[4].classList.add('d-none')
-        }
-
-        const basketItem = { product: item.children[1].innerText, count, html: productHtml }
-        products = products && products.length ? products.filter(e => e.product !== basketItem.product) : []
-        if (basketItem.count > 0) {
-            addToBasket(basketItem, products)
-        } else {
-            localStorage.setItem('products', JSON.stringify(products))
-        }
-    })
-
-})
