@@ -48,8 +48,8 @@ const plants = [
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
-let filteredDiv = document.querySelector('.filteredDiv')
-let productsDiv = document.querySelector('.productsDiv')
+let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
+let plantsDiv = document.querySelector('.plantsDiv')
 const filters = document.querySelectorAll('input[type="checkbox"')
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
@@ -59,12 +59,12 @@ const filterBeginner = document.querySelector('.filterBeginner')
 const filterJapan = document.querySelector('.filterJapan')
 const filterHardy = document.querySelector('.filterHardy')
 const filterOn = () => {
-    filteredDiv.classList.remove('d-none')
-    productsDiv.classList.add('d-none')
+    filteredPlantsDiv.classList.remove('d-none')
+    plantsDiv.classList.add('d-none')
 }
 const filterOff = () => {
-    filteredDiv.classList.add('d-none')
-    productsDiv.classList.remove('d-none')
+    filteredPlantsDiv.classList.add('d-none')
+    plantsDiv.classList.remove('d-none')
 }
 filters.forEach(filter => {
 filter.addEventListener('click', () => {
@@ -111,7 +111,7 @@ filter.addEventListener('click', () => {
                                             </div>` :null
         filteredArr.push(plantHtml)
     }
-    filteredDiv.innerHTML = filteredArr.join('') 
+    filteredPlantsDiv.innerHTML = filteredArr.join('') 
 })
 })
 
