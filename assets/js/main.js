@@ -142,7 +142,3 @@ document.querySelector('.search').addEventListener("input", e => {
 })
 
 //BASKET
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 7abecc2 (Revert "q")
