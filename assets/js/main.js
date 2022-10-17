@@ -1,55 +1,87 @@
-//FILTER
+//MAIN
 const plants = [
-    {"name":"Juniperus Bonsai",
+    {"id":"1",
+    "name":"Juniperus Bonsai",
     "price":45,
     "availability":"in",
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/IMG_8775.jpeg"},
-    {"name":"Phyllanthus Mirabilis",
+    {"id":"2",
+    "name":"Phyllanthus",
     "price":20,
     "availability":"in",
     "type":"",
     "collection":"hardy",
     "image":"img/plants/IMG_9244.jpeg"},
-    {"name":"Juniperus Chinensis Shimpaku Kishu",
+    {"id":"3",
+    "name":"Chinensis Shimpaku",
     "price":60,
     "availability":"in",
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Kishu_Bonsai_02.jpeg"},
-    {"name":"Monstera Deliciosa",
+    {"id":"4",
+    "name":"Monstera Deliciosa",
     "price":25,
     "availability":"in",
     "type":"",
     "collection":"beginner",
     "image":"img/plants/Monstera_ow.jpeg"},
-    {"name":"Olive Tree",
+    {"id":"5",
+    "name":"Olive Tree",
     "price":35,
     "availability":"in",
     "type":"tree",
     "collection":"japan",
     "image":"img/plants/Olive-Tree-L.jpeg"},
-    {"name":"Everfresh Tree",
+    {"id":"6",
+    "name":"Everfresh Tree",
     "price":50,
     "availability":"in",
     "type":"tree",
     "collection":"japan",
     "image":"img/plants/Everfresh.jpeg"},
-    {"name":"Pachira Aquatica",
+    {"id":"7",
+    "name":"Pachira Aquatica",
     "price":15,
     "availability":"out",
     "type":"",
     "collection":"beginner",
     "image":"img/plants/Pachira_Moon_p.jpeg"},
-    {"name":"Variegated Juniper Bonsai",
+    {"id":"8",
+    "name":"Variegated Bonsai",
     "price":40,
     "availability":"in",
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
-let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
 let plantsDiv = document.querySelector('.plantsDiv')
+let shop = () => {
+    return (plantsDiv.innerHTML = plants.map((x)=>{
+        if(x.availability === 'in'){
+        return `<div id="product-id-${x.id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${x.image}" alt="">
+                                                <h5>${x.name}</h5>
+                                                <p>${x.price}$</p>
+                                                <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
+                                            </div>`} 
+        if(x.availability === 'out'){
+        return `<div id="product-id-${x.id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${x.image}" alt="">
+                                                <h5>${x.name}</h5>
+                                                <p>${x.price}$</p>
+                                                <p class="sold">SOLD OUT</p>
+                                            </div>`} 
+        
+    }).join('') )
+}
+shop()
+
+
+//FILTER
+
+let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
 const filters = document.querySelectorAll('input[type="checkbox"')
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
