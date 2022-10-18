@@ -109,9 +109,12 @@ let decrease = (id) => {
 let update = (id) => {
     let searchBasket = basketItems.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
-
+    calculator()
 }
-
+let calculator = () => {
+    let cartIcon = document.getElementById("cartAmount")
+    cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0)
+}
 //FILTER
 
 let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
