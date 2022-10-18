@@ -130,8 +130,6 @@ filter.addEventListener('click', () => {
     filteredPlantsDiv.innerHTML = filteredArr.join('') 
 })
 })
-
-//FILTER ON CLICK
 const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
@@ -157,4 +155,3 @@ document.querySelector('.search').addEventListener("input", e => {
     })
 })
 
-//BASKET
