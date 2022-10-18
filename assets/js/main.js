@@ -68,7 +68,7 @@ let shop = () => {
                                                 <img class="img-fluid" src="${image}" alt="">
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
-                                                <button onclick="increase(${id})" class="btn pb-1 plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4"></p><button onclick="decrease(${id})" class="btn pb-1 minus">-</button>
+                                                <button onclick="increase(${id})" class="btn plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4"></p><button onclick="decrease(${id})" class="btn minus">-</button>
                                             </div>`} 
         if(x.availability === 'out'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
