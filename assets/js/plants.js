@@ -113,7 +113,7 @@ let update = (id) => {
 }
 let calculator = () => {
     let cartIcon = document.getElementById("cartAmount")
-    if(basketItems.map((x) => x.item).reduce((x, y)=>x+y) > 0){
+    if(basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0) > 0){
     cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y)}
     else{cartIcon.innerHTML = ''}
     
