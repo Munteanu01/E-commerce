@@ -94,18 +94,19 @@ let increase = (id) => {
     else{
         searchBasket.item += 1;
     }
-    localStorage.setItem("data", JSON.stringify(basketItems))
     update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basketItems))
 }
 let decrease = (id) => {
-    let selectedItem = id
-    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id)
-    if(searchBasket.item === 0)return
+    let selectedItem = id;
+    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id);
+    if(searchBasket.item === 0)return;
     else{
         searchBasket.item -= 1;
     }
-    localStorage.setItem("data", JSON.stringify(basketItems))
     update(selectedItem.id);
+    basketItems = basketItems.filter((x) => x.item !== 0);
+    localStorage.setItem("data", JSON.stringify(basketItems))
 }
 let update = (id) => {
     let searchBasket = basketItems.find((x)=> x.id === id)
