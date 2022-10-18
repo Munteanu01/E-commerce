@@ -3,7 +3,7 @@ let basketItems = JSON.parse(localStorage.getItem("data")) || []
 
 
 let plantsDiv = document.querySelector('.plantsDiv')
-let shop = () => {
+let shopHtml = () => {
     return (plantsDiv.innerHTML = plants.map((x)=>{
         let {id, name, price, image} = x
         let search = basketItems.find((x)=>x.id === id) || [];
@@ -24,7 +24,7 @@ let shop = () => {
         
     }).join('') )
 }
-shop()
+shopHtml()
 let increase = (id) => {
     let selectedItem = id
     let searchBasket = basketItems.find((x)=> x.id === selectedItem.id)
