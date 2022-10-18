@@ -43,10 +43,12 @@ form{
     box-shadow: $primaryColor 0px 0px 0px 4px;
     border: none;
 }
-
 #contactBImage{
     width: 200px;
     @media (max-width:992px){
         display: none;
     }
+}
+#cartAmount{
+    color: black;
 }

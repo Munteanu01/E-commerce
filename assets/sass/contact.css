@@ -94,4 +94,8 @@ form {
   #contactBImage {
     display: none;
   }
+}
+
+#cartAmount {
+  color: black;
 }/*# sourceMappingURL=contact.css.map */

@@ -56,19 +56,20 @@ const plants = [
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
-let basketItems = []
+let basketItems = JSON.parse(localStorage.getItem("data")) || []
 
 
 let plantsDiv = document.querySelector('.plantsDiv')
 let shop = () => {
     return (plantsDiv.innerHTML = plants.map((x)=>{
         let {id, name, price, image} = x
+        let search = basketItems.find((x)=>x.id === id) || [];
         if(x.availability === 'in'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${image}" alt="">
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
-                                                <button onclick="increase(${id})" class="btn plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4"></p><button onclick="decrease(${id})" class="btn minus">-</button>
+                                                <button onclick="increase(${id})" class="btn plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus">-</button>
                                             </div>`} 
         if(x.availability === 'out'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
@@ -93,7 +94,7 @@ let increase = (id) => {
     else{
         searchBasket.item += 1;
     }
-    
+    localStorage.setItem("data", JSON.stringify(basketItems))
     update(selectedItem.id);
 }
 let decrease = (id) => {
@@ -103,7 +104,7 @@ let decrease = (id) => {
     else{
         searchBasket.item -= 1;
     }
-    
+    localStorage.setItem("data", JSON.stringify(basketItems))
     update(selectedItem.id);
 }
 let update = (id) => {
@@ -115,8 +116,11 @@ let calculator = () => {
     let cartIcon = document.getElementById("cartAmount")
     cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0)
 }
-//FILTER
+calculator()
 
+
+
+//FILTER
 let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
 const filters = document.querySelectorAll('input[type="checkbox"')
 const filterInStock = document.querySelector('.filterInStock')
