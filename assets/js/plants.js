@@ -18,56 +18,56 @@ const filterOff = () => {
     plantsDiv.classList.remove('d-none')
 }
 const plants = [
-    {"id":"wqeqwq",
+    {"id":"JuniperusBonsaiId",
     "name":"Juniperus Bonsai",
     "price":45,
     "availability":"in",
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/IMG_8775.jpeg"},
-    {"id":"gwegwr",
+    {"id":"PhyllanthusId",
     "name":"Phyllanthus",
     "price":20,
     "availability":"in",
     "type":"",
     "collection":"hardy",
     "image":"img/plants/IMG_9244.jpeg"},
-    {"id":"htees",
+    {"id":"ChinensisShimpakuId",
     "name":"Chinensis Shimpaku",
     "price":60,
     "availability":"in",
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Kishu_Bonsai_02.jpeg"},
-    {"id":"saodpas",
+    {"id":"MonsteraDeliciosaId",
     "name":"Monstera Deliciosa",
     "price":25,
     "availability":"in",
     "type":"",
     "collection":"beginner",
     "image":"img/plants/Monstera_ow.jpeg"},
-    {"id":"vansdg",
+    {"id":"OliveTreeId",
     "name":"Olive Tree",
     "price":35,
     "availability":"in",
     "type":"tree",
     "collection":"japan",
     "image":"img/plants/Olive-Tree-L.jpeg"},
-    {"id":"sarsas",
+    {"id":"EverfreshTreeId",
     "name":"Everfresh Tree",
     "price":50,
     "availability":"in",
     "type":"tree",
     "collection":"japan",
     "image":"img/plants/Everfresh.jpeg"},
-    {"id":"vdasga",
+    {"id":"PachiraAquaticaId",
     "name":"Pachira Aquatica",
     "price":15,
     "availability":"out",
     "type":"",
     "collection":"beginner",
     "image":"img/plants/Pachira_Moon_p.jpeg"},
-    {"id":"fbdsfs",
+    {"id":"VariegatedBonsaiId",
     "name":"Variegated Bonsai",
     "price":40,
     "availability":"in",
@@ -126,16 +126,15 @@ document.querySelector('.secondBtn').addEventListener('click', () => {
 document.querySelector('.thirdBtn').addEventListener('click', () => {
     document.querySelector('.thirdDiv').classList.toggle('d-none');
 })
+
 let filtering = () =>{
+    filteredArr = [];
     filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
     filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
     
     return (filteredPlantsDiv.innerHTML = plants.map((x) => {
-        let {id, name, price, image} = x
-        let search = basketItems.find((x)=>x.id === id) || [];
-
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
@@ -155,34 +154,45 @@ let filtering = () =>{
             if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
         if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
             if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
-        if(x.availability === 'in'){
+        
+        !filteredArr.includes(x.id) ? filteredArr.push(x.id) :null
+        
+    }))
+})
+localStorage.setItem('filteredArr', JSON.stringify(filteredArr));filteringHtml()}
+
+
+let filteringHtml = () => {
+filteredArr = JSON.parse(localStorage.getItem('filteredArr'));
+filteredArr.map((y) => {
+    return (filteredPlantsDiv.innerHTML = plants.map((x) => {
+        if(x.id === y){
+            let {id, name, price, image} = x
+            let search = basketItems.find((x)=>x.id === id) || [];
+            console.log(search.item)
             if(search.item === undefined){
-                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${image}" alt="">
-                                                <h5>${name}</h5>
-                                                <p>${price}$</p>
-                                                <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
-                                            </div>`
-            }
+                    return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                    <img class="img-fluid" src="${image}" alt="">
+                                                    <h5>${name}</h5>
+                                                    <p>${price}$</p>
+                                                    <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
+                                                </div>`}
             if(search.item !== undefined){
-                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${image}" alt="">
-                                                <h5>${name}</h5>
-                                                <p>${price}$</p>
-                                                <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
-                                            </div>`
-            }
-        } 
-        if(x.availability === 'out'){
-        return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${image}" alt="">
-                                                <h5>${name}</h5>
-                                                <p>${price}$</p>
-                                                <p class="sold">SOLD OUT</p>
-                                            </div>`} 
+                    return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                    <img class="img-fluid" src="${image}" alt="">
+                                                    <h5>${name}</h5>
+                                                    <p>${price}$</p>
+                                                    <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
+                                                </div>`
+                }
+            
+        }
+        
     }).join(''))
 })
 }
+
+
 
 //NUMBERS
 let increase = (id) => {
@@ -226,7 +236,7 @@ let update = (id) => {
             x.children[5].classList.remove('d-none')
         }
     })
-    console.log(searchBasket.item)
+    filteringHtml()
 }
 let calculator = () => {
     let cartIcon = document.getElementById("cartAmount")
