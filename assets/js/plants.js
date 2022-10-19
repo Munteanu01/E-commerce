@@ -63,12 +63,23 @@ let shopHtml = () => {
         let {id, name, price, image} = x
         let search = basketItems.find((x)=>x.id === id) || [];
         if(x.availability === 'in'){
-        return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+            if(search.item === undefined){
+                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${image}" alt="">
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
                                                 <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
-                                            </div>`} 
+                                            </div>`
+            }
+            if(search.item !== undefined){
+                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${image}" alt="">
+                                                <h5>${name}</h5>
+                                                <p>${price}$</p>
+                                                <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
+                                            </div>`
+            }
+        } 
         if(x.availability === 'out'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${image}" alt="">
