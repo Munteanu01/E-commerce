@@ -90,58 +90,6 @@ let shopHtml = () => {
     }).join('') )
 }
 shopHtml()
-let increase = (id) => {
-    let selectedItem = id
-    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id)
-    if(searchBasket === undefined){
-        basketItems.push({
-            id: selectedItem.id,
-            item: 1,
-        })
-    }
-    else{
-        searchBasket.item += 1;
-    }
-    update(selectedItem.id);
-    localStorage.setItem("data", JSON.stringify(basketItems))
-}
-let decrease = (id) => {
-    let selectedItem = id;
-    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id);
-    if(searchBasket.item === 0)return;
-    else{
-        searchBasket.item -= 1;
-    }
-    update(selectedItem.id);
-    basketItems = basketItems.filter((x) => x.item !== 0);
-    localStorage.setItem("data", JSON.stringify(basketItems))
-}
-let update = (id) => {
-    let searchBasket = basketItems.find((x)=> x.id === id)
-    document.getElementById(id).innerHTML = searchBasket.item
-    calculator()
-    document.querySelectorAll('.item').forEach(x => {
-        if(!x.children[4])return
-        if(x.children[4].innerHTML === '0' ){
-            x.children[4].classList.add('d-none');
-            x.children[5].classList.add('d-none')
-        }
-        if(x.children[4].innerHTML !== '0'){
-            x.children[4].classList.remove('d-none')
-            x.children[5].classList.remove('d-none')
-        }
-    })
-}
-let calculator = () => {
-    let cartIcon = document.getElementById("cartAmount")
-    if(basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0) > 0){
-    cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y)}
-    else{cartIcon.innerHTML = ''}
-    
-}
-calculator()
-
-
 
 //FILTER
 let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
@@ -218,6 +166,62 @@ filtering = () =>{
     }).join(''))
 })
 }
+
+let increase = (id) => {
+    let selectedItem = id
+    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id)
+    if(searchBasket === undefined){
+        basketItems.push({
+            id: selectedItem.id,
+            item: 1,
+        })
+    }
+    else{
+        searchBasket.item += 1;
+    }
+    update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basketItems))
+}
+let decrease = (id) => {
+    let selectedItem = id;
+    let searchBasket = basketItems.find((x)=> x.id === selectedItem.id);
+    if(searchBasket.item === 0)return;
+    else{
+        searchBasket.item -= 1;
+    }
+    update(selectedItem.id);
+    basketItems = basketItems.filter((x) => x.item !== 0);
+    localStorage.setItem("data", JSON.stringify(basketItems))
+}
+let update = (id) => {
+    let searchBasket = basketItems.find((x)=> x.id === id)
+    document.getElementById(id).innerHTML = searchBasket.item
+    calculator()
+    document.querySelectorAll('.item').forEach(x => {
+        if(!x.children[4])return
+        if(x.children[4].innerHTML === '0' ){
+            x.children[4].classList.add('d-none');
+            x.children[5].classList.add('d-none')
+        }
+        if(x.children[4].innerHTML !== '0'){
+            x.children[4].classList.remove('d-none')
+            x.children[5].classList.remove('d-none')
+        }
+    })
+    console.log(searchBasket.item)
+}
+let calculator = () => {
+    let cartIcon = document.getElementById("cartAmount")
+    if(basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0) > 0){
+    cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y)}
+    else{cartIcon.innerHTML = ''}
+    
+}
+calculator()
+
+
+
+
 
     
 
