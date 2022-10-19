@@ -195,7 +195,8 @@ filter.addEventListener('click', () => {
                                             </div>` :null
         filteredArr.push(plantHtml)
     }
-    filteredPlantsDiv.innerHTML = filteredArr.join('') 
+    filteredArr.length === 0 ? filteredPlantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantsDiv.innerHTML = filteredArr.join('') 
+    
 })
 })
 const items = document.querySelectorAll('.item')
