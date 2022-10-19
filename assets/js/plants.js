@@ -161,8 +161,8 @@ const filterOff = () => {
     filteredPlantsDiv.classList.add('d-none')
     plantsDiv.classList.remove('d-none')
 }
-filters.forEach(filter => {
-filter.addEventListener('click', () => {
+filtering = () =>{
+    filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
     filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
@@ -190,7 +190,6 @@ filter.addEventListener('click', () => {
             if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
         if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
             if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
-
         if(x.availability === 'in'){
             if(search.item === undefined){
                 return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
@@ -218,7 +217,10 @@ filter.addEventListener('click', () => {
                                             </div>`} 
     }).join(''))
 })
-})
+}
+
+    
+
 const items = document.querySelectorAll('.item')
 document.querySelector('#filter').addEventListener('click', () => {
     document.querySelector('.filterPlus').classList.toggle('d-none');
