@@ -167,47 +167,56 @@ filter.addEventListener('click', () => {
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
     filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
     
-    filteredArr = [];
-    for(let plant of plants){
-        if(filterInStock.checked && filterOutStock.checked){
-            plant.availability ==='in' || plant.availability === 'out' ?  null :null
-        }
-        else if(filterInStock.checked &&  plant.availability !== 'in'){continue;}
-        else if(filterOutStock.checked && plant.availability !== 'out' ){continue;}
+    return (filteredPlantsDiv.innerHTML = plants.map((x) => {
+        let {id, name, price, image} = x
+        let search = basketItems.find((x)=>x.id === id) || [];
 
+        if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
+        else if(filterInStock.checked &&  x.availability !== 'in')return
+        else if(filterOutStock.checked && x.availability !== 'out' )return
+        if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
+        else if(filterInStock.checked &&  x.availability !== 'in')return
+        else if(filterOutStock.checked && x.availability !== 'out' )return
         if(filterBonsai.checked && filterTree.checked){
-            if(plant.type === 'bonsai' || plant.type === 'tree'){}else{continue;}
-        }
-        else if(filterBonsai.checked && plant.type !== 'bonsai'){continue;}
-        else if(filterTree.checked && plant.type !== 'tree'){continue;}
-
-        if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && plant.collection !== 'beginner'){continue;}
-        if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && plant.collection !== 'japan'){continue;}
-        if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && plant.collection !== 'hardy'){continue;}
-
+            if(x.type === 'bonsai' || x.type === 'tree'){}else{return}}
+        else if(filterBonsai.checked && x.type !== 'bonsai')return
+        else if(filterTree.checked && x.type !== 'tree')return
+        if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && x.collection !== 'beginner')return
+        if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && x.collection !== 'japan')return
+        if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && x.collection !== 'hardy')return
         if(filterBeginner.checked && filterJapan.checked && !filterHardy.checked){
-            if(plant.collection === 'beginner' || plant.collection === 'japan'){}else{continue;}}
+            if(x.collection === 'beginner' || x.collection === 'japan'){}else{return}}
         if(filterJapan.checked && filterHardy.checked && !filterBeginner.checked){
-            if(plant.collection === 'japan' || plant.collection === 'hardy'){}else{continue;}}
+            if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
         if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
-            if(plant.collection === 'hardy' || plant.collection === 'beginner'){}else{continue;}}
+            if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
 
-        plant.availability === 'in' ? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${plant.image}" alt="">
-                                                <h5>${plant.name}</h5>
-                                                <p>${plant.price}$</p>
-                                                <button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-                                            </div>` :null
-        plant.availability === 'out'? plantHtml = `<div class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                <img class="img-fluid" src="${plant.image}" alt="">
-                                                <h5>${plant.name}</h5>
-                                                <p>${plant.price}$</p>
+        if(x.availability === 'in'){
+            if(search.item === undefined){
+                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${image}" alt="">
+                                                <h5>${name}</h5>
+                                                <p>${price}$</p>
+                                                <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
+                                            </div>`
+            }
+            if(search.item !== undefined){
+                return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${image}" alt="">
+                                                <h5>${name}</h5>
+                                                <p>${price}$</p>
+                                                <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
+                                            </div>`
+            }
+        } 
+        if(x.availability === 'out'){
+        return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${image}" alt="">
+                                                <h5>${name}</h5>
+                                                <p>${price}$</p>
                                                 <p class="sold">SOLD OUT</p>
-                                            </div>` :null
-        filteredArr.push(plantHtml)
-    }
-    filteredArr.length === 0 ? filteredPlantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantsDiv.innerHTML = filteredArr.join('') 
-    
+                                            </div>`} 
+    }).join(''))
 })
 })
 const items = document.querySelectorAll('.item')
