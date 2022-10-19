@@ -1,4 +1,22 @@
-//SHOP
+let plantsDiv = document.querySelector('.plantsDiv')
+let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
+const filters = document.querySelectorAll('input[type="checkbox"')
+const filterInStock = document.querySelector('.filterInStock')
+const filterOutStock = document.querySelector('.filterOutStock')
+const filterBonsai = document.querySelector('.filterBonsai')
+const filterTree = document.querySelector('.filterTree')
+const filterBeginner = document.querySelector('.filterBeginner')
+const filterJapan = document.querySelector('.filterJapan')
+const filterHardy = document.querySelector('.filterHardy')
+const items = document.querySelectorAll('.item')
+const filterOn = () => {
+    filteredPlantsDiv.classList.remove('d-none')
+    plantsDiv.classList.add('d-none')
+}
+const filterOff = () => {
+    filteredPlantsDiv.classList.add('d-none')
+    plantsDiv.classList.remove('d-none')
+}
 const plants = [
     {"id":"wqeqwq",
     "name":"Juniperus Bonsai",
@@ -56,8 +74,10 @@ const plants = [
     "type":"bonsai",
     "collection":"japan",
     "image":"img/plants/Wind-Swept_t.jpeg"},]
+
+
+//SHOP
 let basketItems = JSON.parse(localStorage.getItem("data")) || []
-let plantsDiv = document.querySelector('.plantsDiv')
 let shopHtml = () => {
     return (plantsDiv.innerHTML = plants.map((x)=>{
         let {id, name, price, image} = x
@@ -92,24 +112,21 @@ let shopHtml = () => {
 shopHtml()
 
 //FILTER
-let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
-const filters = document.querySelectorAll('input[type="checkbox"')
-const filterInStock = document.querySelector('.filterInStock')
-const filterOutStock = document.querySelector('.filterOutStock')
-const filterBonsai = document.querySelector('.filterBonsai')
-const filterTree = document.querySelector('.filterTree')
-const filterBeginner = document.querySelector('.filterBeginner')
-const filterJapan = document.querySelector('.filterJapan')
-const filterHardy = document.querySelector('.filterHardy')
-const filterOn = () => {
-    filteredPlantsDiv.classList.remove('d-none')
-    plantsDiv.classList.add('d-none')
-}
-const filterOff = () => {
-    filteredPlantsDiv.classList.add('d-none')
-    plantsDiv.classList.remove('d-none')
-}
-filtering = () =>{
+document.querySelector('#filter').addEventListener('click', () => {
+    document.querySelector('.filterPlus').classList.toggle('d-none');
+    document.querySelector('.filterMinus').classList.toggle('d-none');
+    document.querySelector('.filterDiv').classList.toggle('d-none');
+})
+document.querySelector('.firstBtn').addEventListener('click', () => {
+    document.querySelector('.firstDiv').classList.toggle('d-none');
+})
+document.querySelector('.secondBtn').addEventListener('click', () => {
+    document.querySelector('.secondDiv').classList.toggle('d-none');
+})
+document.querySelector('.thirdBtn').addEventListener('click', () => {
+    document.querySelector('.thirdDiv').classList.toggle('d-none');
+})
+let filtering = () =>{
     filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
@@ -167,6 +184,7 @@ filtering = () =>{
 })
 }
 
+//NUMBERS
 let increase = (id) => {
     let selectedItem = id
     let searchBasket = basketItems.find((x)=> x.id === selectedItem.id)
@@ -218,28 +236,6 @@ let calculator = () => {
     
 }
 calculator()
-
-
-
-
-
-    
-
-const items = document.querySelectorAll('.item')
-document.querySelector('#filter').addEventListener('click', () => {
-    document.querySelector('.filterPlus').classList.toggle('d-none');
-    document.querySelector('.filterMinus').classList.toggle('d-none');
-    document.querySelector('.filterDiv').classList.toggle('d-none');
-})
-document.querySelector('.firstBtn').addEventListener('click', () => {
-    document.querySelector('.firstDiv').classList.toggle('d-none');
-})
-document.querySelector('.secondBtn').addEventListener('click', () => {
-    document.querySelector('.secondDiv').classList.toggle('d-none');
-})
-document.querySelector('.thirdBtn').addEventListener('click', () => {
-    document.querySelector('.thirdDiv').classList.toggle('d-none');
-})
 
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
