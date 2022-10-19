@@ -67,7 +67,7 @@ let shopHtml = () => {
                                                 <img class="img-fluid" src="${image}" alt="">
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
-                                                <button onclick="increase(${id})" class="btn plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus">-</button>
+                                                <button onclick="increase(${id})" class="btn plus">+</button><p id="${id}" class="counter d-inline-block mt-1 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus d-none">-</button>
                                             </div>`} 
         if(x.availability === 'out'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
@@ -76,7 +76,6 @@ let shopHtml = () => {
                                                 <p>${price}$</p>
                                                 <p class="sold">SOLD OUT</p>
                                             </div>`} 
-        
     }).join('') )
 }
 shopHtml()
@@ -110,6 +109,17 @@ let update = (id) => {
     let searchBasket = basketItems.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
     calculator()
+    document.querySelectorAll('.item').forEach(x => {
+        if(!x.children[4])return
+        if(x.children[4].innerHTML === '0' ){
+            x.children[4].classList.add('d-none');
+            x.children[5].classList.add('d-none')
+        }
+        if(x.children[4].innerHTML !== '0'){
+            x.children[4].classList.remove('d-none')
+            x.children[5].classList.remove('d-none')
+        }
+    })
 }
 let calculator = () => {
     let cartIcon = document.getElementById("cartAmount")
