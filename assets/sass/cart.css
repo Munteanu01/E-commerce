@@ -95,10 +95,16 @@ body {
   max-width: 440px;
   border-radius: 30px;
   font-size: 1.1rem;
-  padding: 5px 181px;
   transition: 0.2s ease-in-out;
+  padding: 5px 181px;
 }
 #label .toCheckout:hover {
   color: #FFFFFF;
   background-color: #000000;
+}
+@media (max-width: 550px) {
+  #label .toCheckout {
+    padding: 5px 30px;
+    justify-content: center;
+  }
 }/*# sourceMappingURL=cart.css.map */

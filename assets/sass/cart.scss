@@ -41,11 +41,18 @@ body{
         max-width: 440px;
         border-radius: 30px;
         font-size: 1.1rem;
-        padding:5px 181px;
+        
         transition: 0.2s ease-in-out;
         &:hover{
             color: $secondaryColor;
             background-color:$primaryColor;
         }
+        @media(max-width:550px){
+            padding:5px 30px ;
+            justify-content: center;
+        }
+        padding:5px 181px;
+        
+        
     }
 }
