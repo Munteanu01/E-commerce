@@ -7,9 +7,45 @@ body{
     color: $primaryColor;
     font-family: $font;
 }
+.offcanvas-start{
+    background-color: $secondaryColor;
+}
 #basket{
-
+    border-bottom: 1px solid rgb(189, 188, 188);
+    .productName{
+        font-size: 16px;
+    }
+    .color{
+        font-size: 14px;
+        font-weight: 400;
+        color: grey;
+    }
+    .plus , .minus{
+        font-size: 1.4rem;
+    }
 }
 #label{
-
+    .totalText{
+        font-size: 1.1rem;
+    }
+    .checkoutDetails{
+        max-width: 440px;
+    }
+    .totalPrice{
+        font-size: 1.2rem;
+    }
+    .toCheckout{
+        text-decoration: none;
+        color: $primaryColor;
+        border: 2px solid $primaryColor;
+        max-width: 440px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        padding:5px 181px;
+        transition: 0.2s ease-in-out;
+        &:hover{
+            color: $secondaryColor;
+            background-color:$primaryColor;
+        }
+    }
 }

@@ -58,4 +58,47 @@ body {
   background-color: #FFFFFF;
   color: #000000;
   font-family: "Lato", sans-serif;
+}
+
+.offcanvas-start {
+  background-color: #FFFFFF;
+}
+
+#basket {
+  border-bottom: 1px solid rgb(189, 188, 188);
+}
+#basket .productName {
+  font-size: 16px;
+}
+#basket .color {
+  font-size: 14px;
+  font-weight: 400;
+  color: grey;
+}
+#basket .plus, #basket .minus {
+  font-size: 1.4rem;
+}
+
+#label .totalText {
+  font-size: 1.1rem;
+}
+#label .checkoutDetails {
+  max-width: 440px;
+}
+#label .totalPrice {
+  font-size: 1.2rem;
+}
+#label .toCheckout {
+  text-decoration: none;
+  color: #000000;
+  border: 2px solid #000000;
+  max-width: 440px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  padding: 5px 181px;
+  transition: 0.2s ease-in-out;
+}
+#label .toCheckout:hover {
+  color: #FFFFFF;
+  background-color: #000000;
 }/*# sourceMappingURL=cart.css.map */
