@@ -1,143 +1,83 @@
-let plantsDiv = document.querySelector('.plantsDiv')
-let filteredPlantsDiv = document.querySelector('.filteredPlantsDiv')
+let plantersDiv = document.querySelector('.plantersDiv')
+let filteredPlantersDiv = document.querySelector('.filteredPlantersDiv')
 const filters = document.querySelectorAll('input[type="checkbox"')
 const filterInStock = document.querySelector('.filterInStock')
 const filterOutStock = document.querySelector('.filterOutStock')
-const filterBonsai = document.querySelector('.filterBonsai')
-const filterTree = document.querySelector('.filterTree')
-const filterBeginner = document.querySelector('.filterBeginner')
-const filterJapan = document.querySelector('.filterJapan')
-const filterHardy = document.querySelector('.filterHardy')
+const filterCharcoal = document.querySelector('.filterCharcoal')
+const filterCream = document.querySelector('.filterCream')
+const filterMedium = document.querySelector('.filterMedium')
+const filterLarge = document.querySelector('.filterLarge')
 const items = document.querySelectorAll('.item')
 const filterOn = () => {
-    filteredPlantsDiv.classList.remove('d-none')
-    plantsDiv.classList.add('d-none')
+    filteredPlantersDiv.classList.remove('d-none')
+    plantersDiv.classList.add('d-none')
 }
 const filterOff = () => {
-    filteredPlantsDiv.classList.add('d-none')
-    plantsDiv.classList.remove('d-none')
+    filteredPlantersDiv.classList.add('d-none')
+    plantersDiv.classList.remove('d-none')
 }
-const plants = [
-    {"id":"JuniperusBonsaiId",
-    "name":"Juniperus Bonsai",
-    "price":45,
+const planters = [
+    {"id":"OBJ1creamM",
+    "name":"OBJ 1 - Cream, M",
+    "price":15,
     "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/IMG_8775.jpeg"},
-    {"id":"PhyllanthusId",
-    "name":"Phyllanthus",
-    "price":20,
+    "color":"cream",
+    "size":"m",
+    "image":"img/planters/Offwhite-Straight-Pot_M.jpeg"},
+    {"id":"OBJ1charcoalL",
+    "name":"OBJ 1 - Charcoal, L",
+    "price":30,
     "availability":"in",
-    "type":"",
-    "collection":"hardy",
-    "image":"img/plants/IMG_9244.jpeg"},
-    {"id":"ChinensisShimpakuId",
-    "name":"Chinensis Shimpaku",
-    "price":60,
-    "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Kishu_Bonsai_02.jpeg"},
-    {"id":"MonsteraDeliciosaId",
-    "name":"Monstera Deliciosa",
+    "color":"charcoal",
+    "size":"l",
+    "image":"img/planters/black-Straight-Pot-l.jpeg"},
+    {"id":"OBJ2creamL",
+    "name":"OBJ 2 - Cream, L",
     "price":25,
     "availability":"in",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Monstera_ow.jpeg"},
-    {"id":"OliveTreeId",
-    "name":"Olive Tree",
-    "price":35,
+    "color":"cream",
+    "size":"l",
+    "image":"img/planters/Off-White-U-Pot_L.jpeg"},
+    {"id":"OBJ2charcoalM",
+    "name":"OBJ 2 - Charcoal, M",
+    "price":10,
     "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Olive-Tree-L.jpeg"},
-    {"id":"EverfreshTreeId",
-    "name":"Everfresh Tree",
-    "price":50,
+    "color":"charcoal",
+    "size":"m",
+    "image":"img/planters/Black-U-Pot-m.jpeg"},
+    {"id":"OBJ1creamL",
+    "name":"OBJ 1 - Cream, L",
+    "price":30,
     "availability":"in",
-    "type":"tree",
-    "collection":"japan",
-    "image":"img/plants/Everfresh.jpeg"},
-    {"id":"PachiraAquaticaId",
-    "name":"Pachira Aquatica",
+    "color":"cream",
+    "size":"l",
+    "image":"img/planters/Offwhite-Straight-Pot_L.jpeg"},
+    {"id":"OBJ2charcoalL",
+    "name":"OBJ 2 - Charcoal,L",
+    "price":25,
+    "availability":"in",
+    "color":"charcoal",
+    "size":"l",
+    "image":"img/planters/Black-U-Pot-L.jpeg"},
+    {"id":"OBJ2creamM",
+    "name":"OBJ 2 - Cream, M",
+    "price":10,
+    "availability":"in",
+    "color":"cream",
+    "size":"m",
+    "image":"img/planters/Off-White-U-Pot_M.jpeg"},
+    {"id":"OBJ1charcoalM",
+    "name":"OBJ 1 - Charcoal, M",
     "price":15,
-    "availability":"out",
-    "type":"",
-    "collection":"beginner",
-    "image":"img/plants/Pachira_Moon_p.jpeg"},
-    {"id":"VariegatedBonsaiId",
-    "name":"Variegated Bonsai",
-    "price":40,
     "availability":"in",
-    "type":"bonsai",
-    "collection":"japan",
-    "image":"img/plants/Wind-Swept_t.jpeg"},]
-
-/*<div class="plantersDiv row g-5 p-sm-5 p-3 mx-2 justify-content-center">
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Offwhite-Straight-Pot_M.jpeg" alt="">
-<h5>OBJ 1 - Cream, M</h5>
-<p>15$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/black-Straight-Pot-l.jpeg" alt="">
-<h5>OBJ 1 - Charcoal, L</h5>
-<p>30$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Off-White-U-Pot_L.jpeg" alt="">
-<h5>OBJ 2 - Cream, L</h5>
-<p>25$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Black-U-Pot-m.jpeg" alt="">
-<h5>OBJ 2 - Charcoal, M</h5>
-<p>10$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Offwhite-Straight-Pot_L.jpeg" alt="">
-<h5>OBJ 1 - Cream, L</h5>
-<p>30$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Black-U-Pot-L.jpeg" alt="">
-<h5>OBJ 2 - Charcoal, L</h5>
-<p>25$</p>
-<button class="btn pb-1 plus">+</button><p class="counter d-inline-block mt-1 mx-4 d-none"></p><button class="btn pb-1 minus d-none">-</button>
-</div>
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/Off-White-U-Pot_M.jpeg" alt="">
-<h5>OBJ 2 - Cream, M</h5>
-<p>10$</p>
-<p class="sold">SOLD OUT</p>
-</div>
-<div class="col-lg-4 col-sm-6 mt-0  text-center item">
-<img class="img-fluid" src="img/planters/black-Straight-Pot-m.jpeg" alt="">
-<h5>OBJ 1 - Charcoal, M</h5>
-<p>15$</p>
-<p class="sold">SOLD OUT</p>
-</div>
-</div>
-
-*/
-
+    "color":"charcoal",
+    "size":"m",
+    "image":"img/planters/black-Straight-Pot-m.jpeg"}]
 
 //SHOP
 let basketItems = JSON.parse(localStorage.getItem("data")) || []
 let shopHtml = () => {
-    return (plantsDiv.innerHTML = plants.map((x)=>{
+    return (plantersDiv.innerHTML = planters.map((x)=>{
         let {id, name, price, image} = x
         let search = basketItems.find((x)=>x.id === id) || [];
         if(x.availability === 'in'){
@@ -190,27 +130,27 @@ let filtering = () =>{
     filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
+    filterInStock.checked || filterOutStock.checked || filterCharcoal.checked || filterCream.checked || filterLarge.checked || filterMedium.checked || filterHardy.checked ? filterOn() :filterOff();
     
-    return (plants.map((x) => {
+    return (planters.map((x) => {
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
-        if(filterBonsai.checked && filterTree.checked){
-            if(x.type === 'bonsai' || x.type === 'tree'){}else{return}}
-        else if(filterBonsai.checked && x.type !== 'bonsai')return
-        else if(filterTree.checked && x.type !== 'tree')return
-        if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && x.collection !== 'beginner')return
-        if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && x.collection !== 'japan')return
-        if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && x.collection !== 'hardy')return
-        if(filterBeginner.checked && filterJapan.checked && !filterHardy.checked){
+        if(filterCharcoal.checked && filterCream.checked){
+            if(x.type === 'charcoal' || x.type === 'tree'){}else{return}}
+        else if(filterCharcoal.checked && x.type !== 'charcoal')return
+        else if(filterCream.checked && x.type !== 'tree')return
+        if(filterMedium.checked && !filterLarge.checked && !filterHardy.checked && x.collection !== 'beginner')return
+        if(filterLarge.checked && !filterHardy.checked && !filterMedium.checked && x.collection !== 'japan')return
+        if(filterHardy.checked && !filterMedium.checked && !filterLarge.checked && x.collection !== 'hardy')return
+        if(filterMedium.checked && filterLarge.checked && !filterHardy.checked){
             if(x.collection === 'beginner' || x.collection === 'japan'){}else{return}}
-        if(filterJapan.checked && filterHardy.checked && !filterBeginner.checked){
+        if(filterLarge.checked && filterHardy.checked && !filterMedium.checked){
             if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
-        if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
+        if(filterHardy.checked && filterMedium.checked && !filterLarge.checked){
             if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
         
         !filteredArr.includes(x.id) ? filteredArr.push(x.id) :null
@@ -221,8 +161,8 @@ localStorage.setItem('filteredArr', JSON.stringify(filteredArr));filteringHtml()
 let filteringHtml = () => {
 filteredArr = JSON.parse(localStorage.getItem('filteredArr'));
 filteredHtml = [];
-filteredPlantsDiv.innerHTML = filteredArr.map((y) => {
-    plants.map((x) => {
+filteredPlantersDiv.innerHTML = filteredArr.map((y) => {
+    planters.map((x) => {
         if(x.id === y){
             let {id, name, price, image} = x
             let search = basketItems.find((x)=>x.id === id) || [];
@@ -245,7 +185,7 @@ filteredPlantsDiv.innerHTML = filteredArr.map((y) => {
         }
     })
 })
-filteredArr.length === 0 ? filteredPlantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantsDiv.innerHTML = filteredHtml.join('')
+filteredArr.length === 0 ? filteredPlantersDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantersDiv.innerHTML = filteredHtml.join('')
 }
 
 //NUMBERS
