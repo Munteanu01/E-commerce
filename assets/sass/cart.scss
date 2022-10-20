@@ -19,8 +19,13 @@ body{
     }
     .productImage{
         width: 134px;
-        height: 134px;
+        height: 150px;
         overflow: hidden;
+    }
+    .price{
+        font-size: 14px;
+        font-weight: 400;
+        color: grey;
     }
     .plus , .minus{
         font-size: 1.4rem;

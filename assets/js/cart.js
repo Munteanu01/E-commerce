@@ -9,11 +9,14 @@ let basketHtml = () => {
             console.log(search.image)
             return `    <div class="product d-flex mb-4">
             <div class="productImage mb-3 me-3"><img class="img-fluid" src="${search.image}" alt=""></div>
+            <div class="about">
             <p class="productName mb-2">${search.name}</p>
+            <p class="price mb-0">${search.price}$</p>
+            </div>
             <div class="count d-flex ms-auto me-md-5 pe-md-5">
             <button class="btn minus">-</button>
-            <p class="my-auto">5</p><button class="btn plus">+</button></div>
-            <p class="ms-md-5 my-auto ps-5">${search.price}$</p>
+            <p class="my-auto">${item}</p><button class="btn plus">+</button></div>
+            <p class="ms-md-5 my-auto ps-5">${search.price * item}$</p>
             <button class="btn remove">X</button>
             </div>
         `}).join('')
