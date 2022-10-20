@@ -3,7 +3,7 @@ let basket = document.querySelector('#basket')
 let basketStorage = JSON.parse(localStorage.getItem('data')) || []
 let basketHtml = () => {
     if(basketStorage.length !== 0){
-        console.log(1)
+        
     }
     else{
         basket.innerHTML = ``
