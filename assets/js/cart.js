@@ -3,14 +3,12 @@ let basket = document.querySelector('#basket')
 let basketStorage = JSON.parse(localStorage.getItem('data')) || []
 let basketHtml = () => {
     if(basketStorage.length !== 0){
-        label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
-        <p class="me-auto mt-1 totalText">Subtotal</p>
-        <p class="ms-auto totalPrice">300$</p>
-        </div>
-        <a href="./checkout.html" class="d-flex ms-auto toCheckout my-1">Checkout</a>
-        `
-        return basket.innerHTML = basketStorage.map((x)=>{
+        basket.innerHTML = basketStorage.map((x)=>{
+            let {id, item} = x;
+            let search = planters.find((y)=>y.id === id) || plants.find((z)=>z.id === id)
+            
             return `    <div class="product d-flex">
+            <div style="background-image:url()"></div>
             <div class="about">
             <p class="productName mb-2">Name</p>
             <p class="color">Color:</p>
@@ -19,9 +17,13 @@ let basketHtml = () => {
             <p class="ms-md-5 my-auto ps-5">20$</p>
             <button class="btn remove">X</button>
             </div>
+        `}).join('')
+        label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
+        <p class="me-auto mt-1 totalText">Subtotal</p>
+        <p class="ms-auto totalPrice">300$</p>
+        </div>
+        <a href="./checkout.html" class="d-flex ms-auto toCheckout my-1">Checkout</a>
         `
-        }).join('')
-       
         }
     else{
         basket.innerHTML = `<h3>Shopping Cart</h3><h5 class="py-5">You have nothing in your shopping cart</h5>`
