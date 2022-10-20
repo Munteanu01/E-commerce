@@ -138,9 +138,6 @@ let filtering = () =>{
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
-        if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
-        else if(filterInStock.checked &&  x.availability !== 'in')return
-        else if(filterOutStock.checked && x.availability !== 'out' )return
         if(filterBonsai.checked && filterTree.checked){
             if(x.type === 'bonsai' || x.type === 'tree'){}else{return}}
         else if(filterBonsai.checked && x.type !== 'bonsai')return

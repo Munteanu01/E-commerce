@@ -62,14 +62,14 @@ const planters = [
     {"id":"OBJ2creamM",
     "name":"OBJ 2 - Cream, M",
     "price":10,
-    "availability":"in",
+    "availability":"out",
     "color":"cream",
     "size":"m",
     "image":"img/planters/Off-White-U-Pot_M.jpeg"},
     {"id":"OBJ1charcoalM",
     "name":"OBJ 1 - Charcoal, M",
     "price":15,
-    "availability":"in",
+    "availability":"out",
     "color":"charcoal",
     "size":"m",
     "image":"img/planters/black-Straight-Pot-m.jpeg"}]
@@ -130,28 +130,23 @@ let filtering = () =>{
     filters.forEach(filter => {
     filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    filterInStock.checked || filterOutStock.checked || filterCharcoal.checked || filterCream.checked || filterLarge.checked || filterMedium.checked || filterHardy.checked ? filterOn() :filterOff();
+    filterInStock.checked || filterOutStock.checked || filterCharcoal.checked || filterCream.checked || filterLarge.checked || filterMedium.checked ? filterOn() :filterOff();
     
     return (planters.map((x) => {
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
-        if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
-        else if(filterInStock.checked &&  x.availability !== 'in')return
-        else if(filterOutStock.checked && x.availability !== 'out' )return
+
         if(filterCharcoal.checked && filterCream.checked){
-            if(x.type === 'charcoal' || x.type === 'tree'){}else{return}}
-        else if(filterCharcoal.checked && x.type !== 'charcoal')return
-        else if(filterCream.checked && x.type !== 'tree')return
-        if(filterMedium.checked && !filterLarge.checked && !filterHardy.checked && x.collection !== 'beginner')return
-        if(filterLarge.checked && !filterHardy.checked && !filterMedium.checked && x.collection !== 'japan')return
-        if(filterHardy.checked && !filterMedium.checked && !filterLarge.checked && x.collection !== 'hardy')return
-        if(filterMedium.checked && filterLarge.checked && !filterHardy.checked){
-            if(x.collection === 'beginner' || x.collection === 'japan'){}else{return}}
-        if(filterLarge.checked && filterHardy.checked && !filterMedium.checked){
-            if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
-        if(filterHardy.checked && filterMedium.checked && !filterLarge.checked){
-            if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
+            if(x.color === 'charcoal' || x.color === 'cream'){}else{return}}
+        else if(filterCharcoal.checked && x.color !== 'charcoal')return
+        else if(filterCream.checked && x.color !== 'cream')return
+        
+        if(filterMedium.checked && filterLarge.checked){
+            if(x.size === 'm' || x.size === 'l'){}else{return}}
+        else if(filterMedium.checked && x.size !== 'm')return
+        else if(filterLarge.checked && x.size !== 'l')return
+       
         
         !filteredArr.includes(x.id) ? filteredArr.push(x.id) :null
         
