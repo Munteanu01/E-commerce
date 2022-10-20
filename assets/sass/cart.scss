@@ -11,7 +11,9 @@ body{
     background-color: $secondaryColor;
 }
 #basket{
-    border-bottom: 1px solid rgb(189, 188, 188);
+    .product{
+        border-bottom: 1px solid rgb(189, 188, 188);
+    }
     .productName{
         font-size: 16px;
     }
