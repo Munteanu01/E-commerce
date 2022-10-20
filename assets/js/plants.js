@@ -134,7 +134,7 @@ let filtering = () =>{
     !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
     filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
     
-    return (filteredPlantsDiv.innerHTML = plants.map((x) => {
+    return (plants.map((x) => {
         if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
         else if(filterInStock.checked &&  x.availability !== 'in')return
         else if(filterOutStock.checked && x.availability !== 'out' )return
@@ -163,7 +163,6 @@ localStorage.setItem('filteredArr', JSON.stringify(filteredArr));filteringHtml()
 let filteringHtml = () => {
 filteredArr = JSON.parse(localStorage.getItem('filteredArr'));
 filteredHtml = [];
-console.log(filteredHtml)
 filteredPlantsDiv.innerHTML = filteredArr.map((y) => {
     plants.map((x) => {
         if(x.id === y){
@@ -188,7 +187,7 @@ filteredPlantsDiv.innerHTML = filteredArr.map((y) => {
         }
     })
 })
-filteredPlantsDiv.innerHTML = filteredHtml.join('')
+filteredArr.length === 0 ? filteredPlantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantsDiv.innerHTML = filteredHtml.join('')
 }
 
 //NUMBERS
