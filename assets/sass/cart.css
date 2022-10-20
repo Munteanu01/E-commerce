@@ -78,6 +78,15 @@ body {
 #basket .plus, #basket .minus {
   font-size: 1.4rem;
 }
+#basket .plus, #basket .minus, #basket .remove {
+  color: grey;
+}
+#basket .plus:hover, #basket .minus:hover, #basket .remove:hover {
+  color: #000000;
+}
+#basket .plus:active, #basket .minus:active, #basket .remove:active {
+  border-color: #FFFFFF;
+}
 
 #label .totalText {
   font-size: 1.1rem;

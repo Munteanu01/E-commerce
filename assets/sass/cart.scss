@@ -23,6 +23,15 @@ body{
     .plus , .minus{
         font-size: 1.4rem;
     }
+    .plus, .minus, .remove{
+        color: grey;
+        &:hover{
+            color:$primaryColor;
+        }
+        &:active{
+            border-color: $secondaryColor;
+        }
+    }
 }
 #label{
     .totalText{
