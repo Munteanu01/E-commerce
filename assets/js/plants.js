@@ -222,6 +222,7 @@ let update = (id) => {
     let searchBasket = basketItems.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
     calculator()
+    filteringHtml()
     document.querySelectorAll('.item').forEach(x => {
         if(!x.children[4])return
         if(x.children[4].innerHTML === '0' ){
@@ -233,7 +234,7 @@ let update = (id) => {
             x.children[5].classList.remove('d-none')
         }
     })
-    filteringHtml()
+    
 }
 let calculator = () => {
     let cartIcon = document.getElementById("cartAmount")
