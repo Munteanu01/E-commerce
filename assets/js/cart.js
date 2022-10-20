@@ -6,9 +6,9 @@ let basketHtml = () => {
         basket.innerHTML = basketStorage.map((x)=>{
             let {id, item} = x;
             let search = planters.find((y)=>y.id === id) || plants.find((z)=>z.id === id)
-            
-            return `    <div class="product d-flex">
-            <div style="background-image:url()"></div>
+            console.log(search.image)
+            return `    <div class="product d-flex mb-4">
+            <div class="productImage mb-3 me-3"><img class="img-fluid" src="${search.image}" alt=""></div>
             <div class="about">
             <p class="productName mb-2">Name</p>
             <p class="color">Color:</p>
