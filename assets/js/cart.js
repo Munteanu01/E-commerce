@@ -16,7 +16,7 @@ let basketHtml = () => {
             <div class="count d-flex ms-auto me-md-5 pe-md-5">
             <button class="btn minus">-</button>
             <p class="my-auto">${item}</p><button class="btn plus">+</button></div>
-            <p class="ms-md-5 my-auto ps-5">${search.price * item}$</p>
+            <p class="ms-md-5 my-auto ps-md-5">${search.price * item}$</p>
             <button class="btn remove">X</button>
             </div>
         `}).join('')
