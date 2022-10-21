@@ -28,8 +28,8 @@ document.querySelector('.thirdBtn').addEventListener('click', () => {
 let basketItems = JSON.parse(localStorage.getItem("data")) || []
 let shopHtml = () => {
     filteredArr =[]
-    return (plantsDiv.innerHTML = plants.map((x)=>{
-        let {id, name, price, image} = x
+    plantsDiv.innerHTML = plants.map((x)=>{
+        let {id, name, price, image, availability} = x
         let search = basketItems.find((x)=>x.id === id) || [];
         filters.forEach(filter => {
             filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
@@ -58,8 +58,7 @@ let shopHtml = () => {
             filtering()
             return(plantsDiv.innerHTML = filteredArr.map((y) => {
                 if(id === y){
-                    console.log(y)
-                    console.log(search.item)
+                if(availability ==="in"){
                     if(search.item === undefined){
                         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                         <img class="img-fluid" src="${image}" alt="">
@@ -77,10 +76,19 @@ let shopHtml = () => {
                                                     </div>`
                     }
                 }
-                
+                if(availability ==="out"){
+                    return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                <img class="img-fluid" src="${image}" alt="">
+                                                <h5>${name}</h5>
+                                                <p>${price}$</p>
+                                                <p class="sold">SOLD OUT</p>
+                                            </div>`
+                }
+            }
             }).join(''))
-        }else{
-        if(x.availability === 'in'){
+        }
+        else{
+            if(availability === 'in'){
             if(search.item === undefined){
                 return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${image}" alt="">
@@ -97,15 +105,17 @@ let shopHtml = () => {
                                                 <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
                                             </div>`
             }
-        } 
-        if(x.availability === 'out'){
+            } 
+            if(availability === 'out'){
         return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
                                                 <img class="img-fluid" src="${image}" alt="">
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
-                                                <p class="sold">SOLD OUT</p>
-                                            </div>`} }
-    }).join(''))
+        <p class="sold">SOLD OUT</p></div>`
+            }
+        }
+    }).join('')
+    if(plantsDiv.children.length === 0){plantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`}
 }
 shopHtml()
 
@@ -159,7 +169,6 @@ let calculator = () => {
     if(basketItems.map((x) => x.item).reduce((x, y)=>x+y, 0) > 0){
     cartIcon.innerHTML = basketItems.map((x) => x.item).reduce((x, y)=>x+y)}
     else{cartIcon.innerHTML = ''}
-    
 }
 calculator()
 
