@@ -6,18 +6,19 @@ let basketHtml = () => {
         basket.innerHTML = basketStorage.map((x)=>{
             let {id, item} = x;
             let search = planters.find((y)=>y.id === id) || plants.find((z)=>z.id === id)
-            console.log(search.image)
             return `    <div class="product d-flex mb-4">
             <div class="productImage mb-3 me-3"><img class="img-fluid" src="${search.image}" alt=""></div>
             <div class="about">
-            <p class="productName mb-2">${search.name}</p>
-            <p class="price mb-0">${search.price}$</p>
+                <p class="productName mb-2">${search.name}</p>
+                <p class="price mb-0">${search.price}$</p>
             </div>
             <div class="count d-flex ms-auto me-md-5 pe-md-5">
-            <button class="btn minus">-</button>
-            <p class="my-auto">${item}</p><button class="btn plus">+</button></div>
-            <p class="ms-md-5 my-auto ps-md-5">${search.price * item}$</p>
-            <button class="btn remove">X</button>
+                <button onclick="decrease(${id})" class="btn minus" style="color:${item===1?'#cfd1d0':'grey'};">-</button>
+                <p id="${id}" class="my-auto">${item}</p>
+                <button onclick="increase(${id})" class="btn plus">+</button>
+            </div>
+                <p class="ms-md-5 my-auto ps-md-5">${search.price * item}$</p>
+                <button class="btn remove">X</button>
             </div>
         `}).join('')
         label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
@@ -33,3 +34,49 @@ let basketHtml = () => {
     }
 }
 basketHtml()
+let increase = (id) => {
+    let selectedItem = id
+    let searchBasket = basketStorage.find((x)=> x.id === selectedItem.id)
+    if(searchBasket === undefined){
+        basketStorage.push({
+            id: selectedItem.id,
+            item: 1,
+        })
+    }
+    else{
+        searchBasket.item += 1;
+    }
+    selectedItem.previousSibling.previousSibling.style.color="grey"
+    update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basketStorage))
+}
+let decrease = (id) => {
+    let selectedItem = id;
+    let searchBasket = basketStorage.find((x)=> x.id === selectedItem.id);
+    if(searchBasket.item === 2){
+        selectedItem.previousSibling.previousSibling.style.color="#cfd1d0"
+    }
+    if(searchBasket.item === 1)return;
+    else{
+        searchBasket.item -= 1;
+    }
+    update(selectedItem.id);
+    basketStorage = basketStorage.filter((x) => x.item !== 0);
+    localStorage.setItem("data", JSON.stringify(basketStorage))
+}
+let update = (id) => {
+    let searchBasket = basketStorage.find((x)=> x.id === id)
+    document.getElementById(id).innerHTML = searchBasket.item
+    document.querySelectorAll('.item').forEach(x => {
+        if(!x.children[4])return
+        if(x.children[4].innerHTML === '0' ){
+            x.children[4].classList.add('d-none');
+            x.children[5].classList.add('d-none')
+        }
+        if(x.children[4].innerHTML !== '0'){
+            x.children[4].classList.remove('d-none')
+            x.children[5].classList.remove('d-none')
+        }
+    })
+    
+}
