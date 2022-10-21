@@ -9,21 +9,77 @@ const filterBeginner = document.querySelector('.filterBeginner')
 const filterJapan = document.querySelector('.filterJapan')
 const filterHardy = document.querySelector('.filterHardy')
 const items = document.querySelectorAll('.item')
-const filterOn = () => {
-    filteredPlantsDiv.classList.remove('d-none')
-    plantsDiv.classList.add('d-none')
-}
-const filterOff = () => {
-    filteredPlantsDiv.classList.add('d-none')
-    plantsDiv.classList.remove('d-none')
-}
+document.querySelector('#filter').addEventListener('click', () => {
+    document.querySelector('.filterPlus').classList.toggle('d-none');
+    document.querySelector('.filterMinus').classList.toggle('d-none');
+    document.querySelector('.filterDiv').classList.toggle('d-none');
+})
+document.querySelector('.firstBtn').addEventListener('click', () => {
+    document.querySelector('.firstDiv').classList.toggle('d-none');
+})
+document.querySelector('.secondBtn').addEventListener('click', () => {
+    document.querySelector('.secondDiv').classList.toggle('d-none');
+})
+document.querySelector('.thirdBtn').addEventListener('click', () => {
+    document.querySelector('.thirdDiv').classList.toggle('d-none');
+})
 
-//SHOP
+//SHOP & FILTER
 let basketItems = JSON.parse(localStorage.getItem("data")) || []
 let shopHtml = () => {
+    filteredArr =[]
     return (plantsDiv.innerHTML = plants.map((x)=>{
         let {id, name, price, image} = x
         let search = basketItems.find((x)=>x.id === id) || [];
+        filters.forEach(filter => {
+            filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
+            !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null})
+        let filtering = () => {
+            if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
+            else if(filterInStock.checked &&  x.availability !== 'in')return
+            else if(filterOutStock.checked && x.availability !== 'out' )return
+            if(filterBonsai.checked && filterTree.checked){
+                if(x.type === 'bonsai' || x.type === 'tree'){}else{return}}
+            else if(filterBonsai.checked && x.type !== 'bonsai')return
+            else if(filterTree.checked && x.type !== 'tree')return
+            if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && x.collection !== 'beginner')return
+            if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && x.collection !== 'japan')return
+            if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && x.collection !== 'hardy')return
+            if(filterBeginner.checked && filterJapan.checked && !filterHardy.checked){
+                if(x.collection === 'beginner' || x.collection === 'japan'){}else{return}}
+            if(filterJapan.checked && filterHardy.checked && !filterBeginner.checked){
+                if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
+            if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
+                if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
+            
+            !filteredArr.includes(x.id) ? filteredArr.push(x.id) :null
+        }
+        if(filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked){
+            filtering()
+            return(plantsDiv.innerHTML = filteredArr.map((y) => {
+                if(id === y){
+                    console.log(y)
+                    console.log(search.item)
+                    if(search.item === undefined){
+                        return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                        <img class="img-fluid" src="${image}" alt="">
+                                                        <h5>${name}</h5>
+                                                        <p>${price}$</p>
+                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
+                                                    </div>`
+                    }
+                    if(search.item !== undefined){
+                        return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
+                                                        <img class="img-fluid" src="${image}" alt="">
+                                                        <h5>${name}</h5>
+                                                        <p>${price}$</p>
+                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
+                                                    </div>`
+                    }
+                }
+                
+            }).join(''))
+        }else{
         if(x.availability === 'in'){
             if(search.item === undefined){
                 return `<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
@@ -48,86 +104,10 @@ let shopHtml = () => {
                                                 <h5>${name}</h5>
                                                 <p>${price}$</p>
                                                 <p class="sold">SOLD OUT</p>
-                                            </div>`} 
-    }).join('') )
+                                            </div>`} }
+    }).join(''))
 }
 shopHtml()
-
-//FILTER
-document.querySelector('#filter').addEventListener('click', () => {
-    document.querySelector('.filterPlus').classList.toggle('d-none');
-    document.querySelector('.filterMinus').classList.toggle('d-none');
-    document.querySelector('.filterDiv').classList.toggle('d-none');
-})
-document.querySelector('.firstBtn').addEventListener('click', () => {
-    document.querySelector('.firstDiv').classList.toggle('d-none');
-})
-document.querySelector('.secondBtn').addEventListener('click', () => {
-    document.querySelector('.secondDiv').classList.toggle('d-none');
-})
-document.querySelector('.thirdBtn').addEventListener('click', () => {
-    document.querySelector('.thirdDiv').classList.toggle('d-none');
-})
-
-let filtering = () =>{
-    filteredArr = [];
-    filters.forEach(filter => {
-    filter.checked ? filter.nextSibling.classList.add('filtersOnClick') :null
-    !filter.checked ? filter.nextSibling.classList.remove('filtersOnClick') :null
-    filterInStock.checked || filterOutStock.checked || filterBonsai.checked || filterTree.checked || filterJapan.checked || filterBeginner.checked || filterHardy.checked ? filterOn() :filterOff();
-    
-    return (plants.map((x) => {
-        if(filterInStock.checked && filterOutStock.checked){x.availability ==='in' || x.availability === 'out' ?  null :null}
-        else if(filterInStock.checked &&  x.availability !== 'in')return
-        else if(filterOutStock.checked && x.availability !== 'out' )return
-        if(filterBonsai.checked && filterTree.checked){
-            if(x.type === 'bonsai' || x.type === 'tree'){}else{return}}
-        else if(filterBonsai.checked && x.type !== 'bonsai')return
-        else if(filterTree.checked && x.type !== 'tree')return
-        if(filterBeginner.checked && !filterJapan.checked && !filterHardy.checked && x.collection !== 'beginner')return
-        if(filterJapan.checked && !filterHardy.checked && !filterBeginner.checked && x.collection !== 'japan')return
-        if(filterHardy.checked && !filterBeginner.checked && !filterJapan.checked && x.collection !== 'hardy')return
-        if(filterBeginner.checked && filterJapan.checked && !filterHardy.checked){
-            if(x.collection === 'beginner' || x.collection === 'japan'){}else{return}}
-        if(filterJapan.checked && filterHardy.checked && !filterBeginner.checked){
-            if(x.collection === 'japan' || x.collection === 'hardy'){}else{return}}
-        if(filterHardy.checked && filterBeginner.checked && !filterJapan.checked){
-            if(x.collection === 'hardy' || x.collection === 'beginner'){}else{return}}
-        
-        !filteredArr.includes(x.id) ? filteredArr.push(x.id) :null
-        
-    }))
-})
-localStorage.setItem('filteredArr', JSON.stringify(filteredArr));filteringHtml()}
-let filteringHtml = () => {
-filteredArr = JSON.parse(localStorage.getItem('filteredArr'));
-filteredHtml = [];
-filteredPlantsDiv.innerHTML = filteredArr.map((y) => {
-    plants.map((x) => {
-        if(x.id === y){
-            let {id, name, price, image} = x
-            let search = basketItems.find((x)=>x.id === id) || [];
-            if(search.item === undefined){
-                    filteredHtml.push(`<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                    <img class="img-fluid" src="${image}" alt="">
-                                                    <h5>${name}</h5>
-                                                    <p>${price}$</p>
-                                                    <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
-                                                </div>`)}
-            if(search.item !== undefined){
-                    filteredHtml.push(`<div id="product-id-${id}" class="col-lg-4 col-sm-6 mt-0 text-center item">
-                                                    <img class="img-fluid" src="${image}" alt="">
-                                                    <h5>${name}</h5>
-                                                    <p>${price}$</p>
-                                                    <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
-                                                </div>`) 
-                }
-            
-        }
-    })
-})
-filteredArr.length === 0 ? filteredPlantsDiv.innerHTML = `<h5 class="text-center my-5 py-5">No Results</h5>`: filteredPlantsDiv.innerHTML = filteredHtml.join('')
-}
 
 //NUMBERS
 let increase = (id) => {
@@ -160,7 +140,7 @@ let update = (id) => {
     let searchBasket = basketItems.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
     calculator()
-    filteringHtml()
+    shopHtml()
     document.querySelectorAll('.item').forEach(x => {
         if(!x.children[4])return
         if(x.children[4].innerHTML === '0' ){
