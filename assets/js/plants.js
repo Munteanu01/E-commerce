@@ -64,7 +64,7 @@ let shopHtml = () => {
                                                         <img class="img-fluid" src="${image}" alt="">
                                                         <h5>${name}</h5>
                                                         <p>${price}$</p>
-                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
+                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4 d-none">${0}</p><button onclick="decrease(${id})" class="btn minus mb-1 d-none">-</button>
                                                     </div>`
                     }
                     if(search.item !== undefined){
@@ -72,7 +72,7 @@ let shopHtml = () => {
                                                         <img class="img-fluid" src="${image}" alt="">
                                                         <h5>${name}</h5>
                                                         <p>${price}$</p>
-                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item === undefined ? 0 : search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
+                                                        <button onclick="increase(${id})" class="btn plus mb-1">+</button><p id="${id}" class="counter d-inline-block my-0 mx-4">${search.item}</p><button onclick="decrease(${id})" class="btn minus mb-1">-</button>
                                                     </div>`
                     }
                 }
