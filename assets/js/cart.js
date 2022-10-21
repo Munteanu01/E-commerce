@@ -18,7 +18,7 @@ let basketHtml = () => {
                 <button onclick="increase(${id})" class="btn plus">+</button>
             </div>
                 <p class="ms-md-5 my-auto ps-md-5">${search.price * item}$</p>
-                <button class="btn remove">X</button>
+                <button onclick="remove(${id})" class="btn remove">X</button>
             </div>
         `}).join('')
         label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
@@ -67,16 +67,11 @@ let decrease = (id) => {
 let update = (id) => {
     let searchBasket = basketStorage.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
-    document.querySelectorAll('.item').forEach(x => {
-        if(!x.children[4])return
-        if(x.children[4].innerHTML === '0' ){
-            x.children[4].classList.add('d-none');
-            x.children[5].classList.add('d-none')
-        }
-        if(x.children[4].innerHTML !== '0'){
-            x.children[4].classList.remove('d-none')
-            x.children[5].classList.remove('d-none')
-        }
-    })
-    
+    basketHtml()
+}
+let remove = (id) => {
+    let selectedItem = id
+    basketStorage = basketStorage.filter((z)=>z.id !== selectedItem.id)
+    basketHtml()
+    localStorage.setItem("data", JSON.stringify(basketStorage))
 }
