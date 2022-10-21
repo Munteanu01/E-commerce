@@ -21,12 +21,6 @@ let basketHtml = () => {
                 <button onclick="remove(${id})" class="btn remove">X</button>
             </div>
         `}).join('')
-        label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
-        <p class="me-auto mt-1 totalText">Subtotal</p>
-        <p class="ms-auto totalPrice">300$</p>
-        </div>
-        <a href="./checkout.html" class="d-flex ms-auto toCheckout my-1">Checkout</a>
-        `
         }
     else{
         basket.innerHTML = `<h3>Shopping Cart</h3><h5 class="py-5">You have nothing in your shopping cart</h5>`
@@ -68,10 +62,31 @@ let update = (id) => {
     let searchBasket = basketStorage.find((x)=> x.id === id)
     document.getElementById(id).innerHTML = searchBasket.item
     basketHtml()
+    total()
 }
 let remove = (id) => {
     let selectedItem = id
     basketStorage = basketStorage.filter((z)=>z.id !== selectedItem.id)
     basketHtml()
+    total()
     localStorage.setItem("data", JSON.stringify(basketStorage))
 }
+let total = () => {
+    if(basketStorage.length !== 0){
+        let amount = basketStorage.map((x)=>{
+            let {item, id} = x
+            let search = planters.find((y)=>y.id === id) || plants.find((z)=>z.id === id)
+            return item * search.price;
+            
+            
+        })
+        .reduce((x, y)=> x+y, 0);
+        label.innerHTML = ` <div class="checkoutDetails d-flex ms-auto">
+                            <p class="me-auto mt-1 totalText">Subtotal</p>
+                            <p class="ms-auto totalPrice">${amount}$</p>
+                            </div>
+                            <a href="./checkout.html" class="d-flex ms-auto toCheckout my-1">Checkout</a>
+        `
+    }else return
+}
+total()
