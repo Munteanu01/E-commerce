@@ -20,22 +20,47 @@ body{
 .introImg{
     display: inline-block;
 }
+
+
 .plantsLink, .plantersLink{
     font-size: 1.3rem;
+    position: relative;
     text-decoration: none;
     color: $primaryColor;
-    border: 2px solid $primaryColor;
-    border-radius: 20px;
+    line-height: 3;
+    transition: 400ms ease-in-out;
     &:hover{
         color: $secondaryColor;
-        border-color: $thirdColor;
-        background-color: $thirdColor;
-        transition:300ms ease-in-out;
     }
     @media (max-width:992px){
         font-size: 1rem;
     }
 }
+.plantsLink, .plantersLink{
+    &::before {
+        content: '';
+        background-color:#8cb359;
+        border-radius: 5px;
+        position: absolute;
+        left: 95%;
+        bottom: 70%;
+        width: 10px;
+        height: 10px;
+        z-index: -1;
+        transition: 300ms ease-in-out;
+    }
+    &:hover::before {
+        border-radius: 0px;
+        left: -5px;
+        bottom: 0;
+        height: 100%;
+        width: calc(100% + 10px);
+    } 
+}
+
+
+
+
 .greenSpan{
     color: $thirdColor;
 }
