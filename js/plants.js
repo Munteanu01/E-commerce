@@ -175,9 +175,9 @@ calculator()
 //SEARCH
 document.querySelector('.search').addEventListener("input", e => {
     const value = e.target.value.toLowerCase();
-    items.forEach(item => {
-        const isVisible = item.children[1].textContent.toLowerCase().includes(value)
-        item.classList.toggle('d-none', !isVisible)
-    })
+    for(let i = 0; i<plantsDiv.children.length; i++){
+        const isVisible = plantsDiv.children[i].children[1].textContent.toLowerCase().includes(value);
+        plantsDiv.children[i].classList.toggle('d-none', !isVisible)
+    }
 })
 
