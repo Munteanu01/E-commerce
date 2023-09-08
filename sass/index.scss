@@ -8,7 +8,7 @@ body{
     font-family: $font;
     overflow-x:hidden;
 }
-.introImg, .plantsImg, .plantersImg{
+.plantsImg, .plantersImg{
     width: 400px;
     @media(max-width:1400px){
         width: 300px;
@@ -17,8 +17,14 @@ body{
         width: 200px;
     }
 }
-.introImg{
-    display: inline-block;
+.introImg {
+    width: 400px;
+    @media(max-width:1400px){
+        width: 350px;
+    }
+    @media(max-width:992px){
+        width: 300px;
+    }
 }
 
 
@@ -50,7 +56,7 @@ body{
         transition: 300ms ease-in-out;
     }
     &:hover::before {
-        border-radius: 0px;
+        border-radius: 15px;
         left: -5px;
         bottom: 0;
         height: 100%;
