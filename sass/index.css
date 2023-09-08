@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+.navbar-toggler, .btn-close {
+  border: none;
+}
+.navbar-toggler:focus, .navbar-toggler :active, .navbar-toggler :focus, .btn-close:focus, .btn-close :active, .btn-close :focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("/img/icons/menu.png");
+}
+
+.logo {
+  width: 80px;
+}
+
+.cartIcon {
+  width: 37px;
+  margin: 0 12px 0 5px;
+}
+
+#cartAmount {
+  position: absolute;
+  top: 60%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.offcanvas-start {
+  background-color: #FFF9F0;
+  font-size: 1.3rem;
+}
+
+.contact {
+  width: 250px;
+}
+@media (max-width: 576px) {
+  .contact {
+    width: 200px;
+  }
+}
+
+.contactIcon {
+  width: 25px;
+}
+
+.contactIcons {
+  justify-content: space-between;
+}
+
+body {
+  background-color: #FFF9F0;
+  color: #000000;
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+}
+
+.plantsImg, .plantersImg {
+  width: 400px;
+}
+@media (max-width: 1400px) {
+  .plantsImg, .plantersImg {
+    width: 300px;
+  }
+}
+@media (max-width: 992px) {
+  .plantsImg, .plantersImg {
+    width: 200px;
+  }
+}
+
+.introImg {
+  width: 400px;
+}
+@media (max-width: 1400px) {
+  .introImg {
+    width: 350px;
+  }
+}
+@media (max-width: 992px) {
+  .introImg {
+    width: 300px;
+  }
+}
+
+.plantsLink, .plantersLink {
+  font-size: 1.3rem;
+  position: relative;
+  text-decoration: none;
+  color: #000000;
+  line-height: 3;
+  transition: 400ms ease-in-out;
+}
+.plantsLink:hover, .plantersLink:hover {
+  color: #FFFFFF;
+}
+@media (max-width: 992px) {
+  .plantsLink, .plantersLink {
+    font-size: 1rem;
+  }
+}
+
+.plantsLink::before, .plantersLink::before {
+  content: "";
+  background-color: #8cb359;
+  border-radius: 5px;
+  position: absolute;
+  left: 95%;
+  bottom: 70%;
+  width: 10px;
+  height: 10px;
+  z-index: -1;
+  transition: 300ms ease-in-out;
+}
+.plantsLink:hover::before, .plantersLink:hover::before {
+  border-radius: 15px;
+  left: -5px;
+  bottom: 0;
+  height: 100%;
+  width: calc(100% + 10px);
+}
+
+.greenSpan {
+  color: #7A9D4C;
+}/*# sourceMappingURL=index.css.map */

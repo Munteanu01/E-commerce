@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap");
+.navbar-toggler, .btn-close {
+  border: none;
+}
+.navbar-toggler:focus, .navbar-toggler :active, .navbar-toggler :focus, .btn-close:focus, .btn-close :active, .btn-close :focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("/img/icons/menu.png");
+}
+
+.logo {
+  width: 80px;
+}
+
+.cartIcon {
+  width: 37px;
+  margin: 0 12px 0 5px;
+}
+
+#cartAmount {
+  position: absolute;
+  top: 60%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.offcanvas-start {
+  background-color: #FFF9F0;
+  font-size: 1.3rem;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: "Lato", sans-serif;
+}
+
+.offcanvas-start {
+  background-color: #FFFFFF;
+}
+
+#basket .product {
+  border-bottom: 1px solid rgb(189, 188, 188);
+}
+#basket .productName {
+  font-size: 16px;
+}
+#basket .productImage {
+  width: 134px;
+  overflow: hidden;
+}
+#basket .price {
+  font-size: 14px;
+  font-weight: 400;
+  color: grey;
+}
+#basket .plus, #basket .minus {
+  font-size: 1.4rem;
+}
+#basket .plus, #basket .minus, #basket .remove {
+  color: grey;
+}
+#basket .plus:hover, #basket .minus:hover, #basket .remove:hover {
+  color: #000000;
+}
+#basket .plus:active, #basket .minus:active, #basket .remove:active {
+  border-color: #FFFFFF;
+}
+
+#label .totalText {
+  font-size: 1.1rem;
+}
+#label .checkoutDetails {
+  max-width: 440px;
+}
+#label .totalPrice {
+  font-size: 1.2rem;
+}
+#label .toCheckout {
+  text-decoration: none;
+  color: #000000;
+  border: 2px solid #000000;
+  max-width: 440px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  transition: 0.2s ease-in-out;
+  padding: 5px 181px;
+}
+#label .toCheckout:hover {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+@media (max-width: 550px) {
+  #label .toCheckout {
+    padding: 5px 30px;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=cart.css.map */
